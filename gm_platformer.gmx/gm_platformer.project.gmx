@@ -19,6 +19,7 @@
     <object>objects\player</object>
     <object>objects\tile</object>
     <object>objects\obj_solid</object>
+    <object>objects\obj_physics</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
