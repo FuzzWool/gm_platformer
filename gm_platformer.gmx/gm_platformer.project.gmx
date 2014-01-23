@@ -7,14 +7,18 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\box</sprite>
+    <sprite>sprites\black_box</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\draw_me.gml</script>
+    <script>scripts\move_push.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\player</object>
+    <object>objects\tile</object>
+    <object>objects\obj_solid</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
