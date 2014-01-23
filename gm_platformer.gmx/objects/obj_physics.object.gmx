@@ -25,8 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>move_x = 0
+            <string>//The amount "batched on" to a proportional movement.
+move_x = 0
 move_y = 0
+
+//The absolute limits of a movement. May never exceed.
+cap_x = 5
+cap_y = 15
+
+//The amount the move values go towards 'normalizing' each loop.
+slow_x = 0.5
+slow_y = 0
 </string>
           </argument>
         </arguments>
@@ -52,11 +61,10 @@ move_y = 0
             <string>//APPLY PHYSICS
 
 //Cap movement.
-cap = 5
-if move_x &gt;= +cap {move_x = +cap}
-if move_x &lt;= -cap {move_x = -cap}
-if move_y &gt;= +cap {move_y = +cap}
-if move_y &lt;= -cap {move_y = -cap}
+if move_x &gt;= +cap_x {move_x = +cap_x}
+if move_x &lt;= -cap_x {move_x = -cap_x}
+if move_y &gt;= +cap_y {move_y = +cap_y}
+if move_y &lt;= -cap_y {move_y = -cap_y}
 
 //Move, check all nearby collisions.
 if move_x &gt; 0 {move_push(+1,0,+round(move_x))}
@@ -65,12 +73,10 @@ if move_y &gt; 0 {move_push(0,+1,+round(move_y))}
 if move_y &lt; 0 {move_push(0,-1,-round(move_y))}
 
 //Slow down movement.
-amt = 0.25
-if move_x &gt; 0 {move_x -= amt}
-if move_x &lt; 0 {move_x += amt}
-if move_y &gt; 0 {move_y -= amt}
-if move_y &lt; 0 {move_y += amt}
-
+if move_x &gt; 0 {move_x -= slow_x}
+if move_x &lt; 0 {move_x += slow_x}
+if move_y &gt; 0 {move_y -= slow_y}
+if move_y &lt; 0 {move_y += slow_y}
 </string>
           </argument>
         </arguments>

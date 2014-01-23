@@ -25,16 +25,29 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//CONTROLS
-amt = 5
-if keyboard_check(ord('A'))
+            <string>//GRAVITY
+move_y += 0.8
+//reset on floor
+if place_meeting(x,y+1,obj_solid)
+{move_y = 0;}
+//ceiling bump
+if place_meeting(x,y-1,obj_solid)
+and move_y &lt; 0
+{move_y = 0;}
+
+//CONTROLS
+//move
+amt = 1
+if keyboard_check(vk_left)
 {move_x -= amt}
-if keyboard_check(ord('D'))
+if keyboard_check(vk_right)
 {move_x += amt}
-if keyboard_check(ord('W'))
-{move_y -= amt}
-if keyboard_check(ord('S'))
-{move_y += amt}
+//jump
+if keyboard_check(ord('Z'))
+{
+    if place_meeting(x,y+1,obj_solid)
+    {move_y -= 11;}
+}
 </string>
           </argument>
         </arguments>
@@ -82,7 +95,7 @@ if keyboard_check(ord('S'))
           <argument>
             <kind>1</kind>
             <string>draw_me()
-draw_text(32,32,string(self.move_x))
+draw_text(32,32,string(self.move_y))
 a="Hello World!"
 b=33
 draw_text(32,64,"The number sign is a line break!#Here's how you print variables:#"+string(a)+" You have "+string(b)+" apples.#Easy huh?")
