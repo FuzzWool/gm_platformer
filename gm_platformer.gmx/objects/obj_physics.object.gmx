@@ -59,13 +59,13 @@ if move_y &gt;= +cap {move_y = +cap}
 if move_y &lt;= -cap {move_y = -cap}
 
 //Move, check all nearby collisions.
-if move_x &gt; 0 {move_push(+1,0,+move_x)}
-if move_x &lt; 0 {move_push(-1,0,-move_x)}
-if move_y &gt; 0 {move_push(0,+1,+move_y)}
-if move_y &lt; 0 {move_push(0,-1,-move_y)}
+if move_x &gt; 0 {move_push(+1,0,+round(move_x))}
+if move_x &lt; 0 {move_push(-1,0,-round(move_x))}
+if move_y &gt; 0 {move_push(0,+1,+round(move_y))}
+if move_y &lt; 0 {move_push(0,-1,-round(move_y))}
 
 //Slow down movement.
-amt = 1
+amt = 0.25
 if move_x &gt; 0 {move_x -= amt}
 if move_x &lt; 0 {move_x += amt}
 if move_y &gt; 0 {move_y -= amt}
