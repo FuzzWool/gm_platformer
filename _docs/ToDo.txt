@@ -1,0 +1,42 @@
+LIGHT LABYRINTH DEMO - "Plants!"
+----------------------------------------------------------------------------
+Features:
+* Moth! He can double-jump, swipe his sword and prime his shield.
+* Plants! They hop around and cause damage to Moth on contact.
+* Moving Camera! Tweening for room changes.
+* A transitioning background! A moving sunset upon a color-changing sky.
+============================================================================
+
+
+============================================================================
+! Moth
+	! Walking sprites
+	! Jumping sprites
+	! Double-Jumping sprites
+	! Sword slashing sprites
+	! Shield priming sprites
+
+	! Landing: squish, antenna bop
+	! Ceiling: squish, antenna flop
+
+! Plants
+
+	! Idle bouncing
+	! Moves towards Moth
+
+
+! Damage
+	! Moth > Plant: Plant splits apart
+	! Plant > Moth: Moth recoils, cannot move
+	! Health Bar
+
+! Camera
+	! Camera snaps to Moth
+	! Camera is locked to rooms, tweens to a new room on enterance
+	! Camera snaps to the side of "connected" rooms
+
+
+! Background
+	! Parallaxed background (3 layers)
+	! Color transition settings (Gradiented colors are set in each room)
+	! 'Static' backround (1 layer, the sun)
