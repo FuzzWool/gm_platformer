@@ -30,11 +30,11 @@ move_x = 0
 move_y = 0
 
 //The absolute limits of a movement. May never exceed.
-cap_x = 5
-cap_y = 15
+cap_x = 2.5
+cap_y = 7.5
 
 //The amount the move values go towards 'normalizing' each loop.
-slow_x = 0.5
+slow_x = 0.25
 slow_y = 0
 </string>
           </argument>
