@@ -10,11 +10,16 @@ Features:
 
 ============================================================================
 ! Moth
-	! Walking sprites
-	! Jumping sprites
-	! Double-Jumping sprites
-	! Sword slashing sprites
-	! Shield priming sprites
+	+ Walking sprites
+	+ Jumping sprites
+	+ Double-Jumping sprites
+	+ Sword slashing sprites
+
+	! Change tilesize to 16x16 pixels
+	! walking
+	! jumping
+	! hovering
+	! slash
 
 	! Landing: squish, antenna bop
 	! Ceiling: squish, antenna flop
