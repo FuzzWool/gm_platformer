@@ -65,8 +65,8 @@ _hover_animspeed = 0.5
           <argument>
             <kind>1</kind>
             <string>//PHYSICS
-if _hovering == false {move_y += 0.3}
-if _hovering == true  {move_y += 0.1}
+if _hovering == false {move_y += 0.25}
+if _hovering == true  {move_y += 0.25}
 //reset on floor
 if place_meeting(x,y+1,obj_solid)
 {move_y = 0;}
@@ -98,11 +98,11 @@ if keyboard_check(vk_right){move_x += 1}
 //jump
 if keyboard_check_pressed(ord('Z'))
 {
-    if not _on_ground and not _hovering{move_y = -3.5; _hovering = true}
-    if _on_ground{move_y = -5.5;}
+    if not _on_ground and not _hovering{move_y = -3; _hovering = true}
+    if _on_ground{move_y = -4.5;}
 }
 //jump height
-if not keyboard_check(ord('Z'))
+if keyboard_check_released(ord('Z')) and not _hovering
 {
     if move_y &lt;= 0 {move_y += 1;}
 }
@@ -132,7 +132,7 @@ if keyboard_check_pressed(ord('X')){_slashing = true}
           <argument>
             <kind>1</kind>
             <string>//HITBOX
-draw_me()
+//draw_me()
 //draw_text(32,32,string(_frame))
 //draw_text(32,64,string(sprite_get_number(_sprite)))
 
@@ -143,7 +143,7 @@ draw_me()
 //direction, origin
 if _facing_right == true {_flip = 1}
 if _facing_right == false {_flip = -1}
-_x = x+8; _y = y
+_x = x+5; _y = y+14
 
 
 //WINGS
@@ -163,9 +163,9 @@ if not _on_ground
     if move_y &gt;  0 {_sprite=moth_jump_down;}
     if move_y &lt;= 0 {_sprite=moth_jump_up;}
 }
-if _slashing{_sprite=moth_slash; _animspeed = 0.3}
+if _slashing{_sprite=moth_slash; _animspeed = 0.4}
 //(reset frame)
-if _sprite != __old_sprite {_frame = 1;}
+if _sprite != __old_sprite {_frame = 0;}
 __old_sprite = _sprite
 
 //draw

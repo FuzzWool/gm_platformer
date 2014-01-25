@@ -19,8 +19,9 @@ Features:
 	+ walking
 	+ slash
 	+ jumping
-============================================================================
 	+ hovering
+============================================================================
+	! tweak physics
 
 	! Landing: squish, antenna bop
 	! Ceiling: squish, antenna flop
