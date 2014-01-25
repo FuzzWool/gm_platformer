@@ -18,11 +18,9 @@ Features:
 	+ Change tilesize to 16x16 pixels
 	+ walking
 	+ slash
-============================================================================
 	+ jumping
-	! hovering
-		! try seperating into it's own object
-
+============================================================================
+	+ hovering
 
 	! Landing: squish, antenna bop
 	! Ceiling: squish, antenna flop

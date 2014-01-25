@@ -65,7 +65,8 @@ _hover_animspeed = 0.5
           <argument>
             <kind>1</kind>
             <string>//PHYSICS
-move_y += 0.4
+if _hovering == false {move_y += 0.3}
+if _hovering == true  {move_y += 0.1}
 //reset on floor
 if place_meeting(x,y+1,obj_solid)
 {move_y = 0;}
@@ -95,13 +96,19 @@ if _on_ground{_hovering = false}
 if keyboard_check(vk_left){move_x -= 1}
 if keyboard_check(vk_right){move_x += 1}
 //jump
-if keyboard_check(ord('Z'))
+if keyboard_check_pressed(ord('Z'))
 {
-    if not _on_ground and not _hovering{move_y -= 2; _hovering = true}
-    if _on_ground{move_y -= 5.5;}
+    if not _on_ground and not _hovering{move_y = -3.5; _hovering = true}
+    if _on_ground{move_y = -5.5;}
 }
+//jump height
+if not keyboard_check(ord('Z'))
+{
+    if move_y &lt;= 0 {move_y += 1;}
+}
+
 //slash
-if keyboard_check(ord('X')){_slashing = true}
+if keyboard_check_pressed(ord('X')){_slashing = true}
 </string>
           </argument>
         </arguments>
