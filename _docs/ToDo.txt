@@ -21,6 +21,8 @@ Features:
 ============================================================================
 	+ jumping
 	! hovering
+		! try seperating into it's own object
+
 
 	! Landing: squish, antenna bop
 	! Ceiling: squish, antenna flop

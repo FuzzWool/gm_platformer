@@ -29,6 +29,7 @@
 
 //BEGIN STEP
 _slashing = false
+_hovering = false
 _facing_right = false
 _on_ground = false
 
@@ -37,6 +38,10 @@ _sprite = moth_idle
 _frame = 0
 _animspeed = 0.3
 __old_sprite = _sprite
+
+_hover_sprite = moth_jump_hover
+_hover_frame = 0
+_hover_animspeed = 0.5
 </string>
           </argument>
         </arguments>
@@ -70,23 +75,31 @@ and move_y &lt; 0
 {move_y = 0;}
 
 //STATES
+//ground
 _on_ground = false
 if place_meeting(x,y+1,obj_solid){_on_ground = true}
-
+//direction
 if not _slashing
 {
     if move_x &gt; 0 {_facing_right = true}
     if move_x &lt; 0 {_facing_right = false}
 }
-
+//slashing
 if _frame &gt;= sprite_get_number(_sprite)-1 {_slashing = false;}
+//hover
+if _on_ground{_hovering = false}
+
 
 //CONTROLS
 //move
 if keyboard_check(vk_left){move_x -= 1}
 if keyboard_check(vk_right){move_x += 1}
 //jump
-if keyboard_check(ord('Z')) and _on_ground{move_y -= 5.5;}
+if keyboard_check(ord('Z'))
+{
+    if not _on_ground and not _hovering{move_y -= 2; _hovering = true}
+    if _on_ground{move_y -= 5.5;}
+}
 //slash
 if keyboard_check(ord('X')){_slashing = true}
 </string>
@@ -117,14 +130,25 @@ draw_me()
 //draw_text(32,64,string(sprite_get_number(_sprite)))
 
 
-//SPRITES
+
+//MAIN SPRITES
 
 //direction, origin
 if _facing_right == true {_flip = 1}
 if _facing_right == false {_flip = -1}
 _x = x+8; _y = y
 
-//sprites
+
+//WINGS
+if _hovering
+{
+    _hover_frame += _hover_animspeed
+    _hover_frame = _hover_frame mod sprite_get_number(_hover_sprite)
+    draw_sprite_ext
+    (_hover_sprite, _hover_frame, _x,_y, _flip,1, 0, c_white, 0.5);
+}
+
+//MOTH
 _sprite=moth_idle; animspeed = 0.1
 if move_x != 0 and _on_ground{_sprite=moth_walk; _animspeed=0.3}
 if not _on_ground
