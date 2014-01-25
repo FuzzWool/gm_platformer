@@ -14,13 +14,13 @@ Features:
 	+ Double-Jumping sprites
 	+ Sword slashing sprites
 
-============================================================================
 
-	! Change tilesize to 16x16 pixels
-	! walking
+	+ Change tilesize to 16x16 pixels
+	+ walking
+============================================================================
+	! slash
 	! jumping
 	! hovering
-	! slash
 
 	! Landing: squish, antenna bop
 	! Ceiling: squish, antenna flop

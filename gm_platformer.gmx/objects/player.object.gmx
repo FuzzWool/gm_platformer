@@ -29,8 +29,13 @@
 image_speed = 2
 
 //EVENTS
+slashing = false
 facing_right = false
 on_ground = false
+
+//
+
+_old_sprite = self
 </string>
           </argument>
         </arguments>
@@ -71,13 +76,12 @@ if move_x &lt; 0 {facing_right = false}
 
 //CONTROLS
 //move
-if keyboard_check(vk_left)
-{move_x -= 1}
-if keyboard_check(vk_right)
-{move_x += 1}
+if keyboard_check(vk_left){move_x -= 1}
+if keyboard_check(vk_right){move_x += 1}
 //jump
-if keyboard_check(ord('Z')) and on_ground
-{move_y -= 5.5;}
+if keyboard_check(ord('Z')) and on_ground{move_y -= 5.5;}
+//slash
+if keyboard_check(ord('X')){slashing = true}
 </string>
           </argument>
         </arguments>
@@ -102,7 +106,7 @@ if keyboard_check(ord('Z')) and on_ground
             <kind>1</kind>
             <string>//HITBOX
 draw_me()
-draw_text(32,32,string(image_index))
+//draw_text(32,32,string(image_index))
 /*a="Hello World!"
 b=33
 draw_text(32,64,"The number sign is a line break!#Here's how you print variables:#"+string(a)+" You have "+string(b)+" apples.#Easy huh?")
@@ -117,10 +121,13 @@ _x = x+8; _y = y
 
 //sprites
 _sprite=moth_idle
-if move_x != 0 and on_ground{_sprite=moth_walk;}
+if move_x != 0 and on_ground{_sprite=moth_walk}
+if slashing{_sprite=moth_slash}
 
 //draw
-draw_sprite_ext(_sprite, round(image_index/3.5), _x,_y, _flip,1, 0, c_white, 255 );
+draw_sprite_ext
+(_sprite, round(image_index/3), _x,_y, _flip,1, 0, c_white, 255 );
+//draw_text(32,32,string(sprite_get_number(_sprite)))
 </string>
           </argument>
         </arguments>
