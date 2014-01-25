@@ -113,6 +113,9 @@ if keyboard_check(ord('X')){_slashing = true}
             <kind>1</kind>
             <string>//HITBOX
 draw_me()
+//draw_text(32,32,string(_frame))
+//draw_text(32,64,string(sprite_get_number(_sprite)))
+
 
 //SPRITES
 
@@ -124,9 +127,14 @@ _x = x+8; _y = y
 //sprites
 _sprite=moth_idle; animspeed = 0.1
 if move_x != 0 and _on_ground{_sprite=moth_walk; _animspeed=0.3}
+if not _on_ground
+{
+    if move_y &gt;  0 {_sprite=moth_jump_down;}
+    if move_y &lt;= 0 {_sprite=moth_jump_up;}
+}
 if _slashing{_sprite=moth_slash; _animspeed = 0.3}
-//
-if _sprite != __old_sprite {_frame = 0;}
+//(reset frame)
+if _sprite != __old_sprite {_frame = 1;}
 __old_sprite = _sprite
 
 //draw
@@ -134,8 +142,6 @@ _frame += _animspeed
 _frame = _frame mod sprite_get_number(_sprite)
 draw_sprite_ext
 (_sprite, _frame, _x,_y, _flip,1, 0, c_white, 255 );
-draw_text(32,32,string(_frame))
-draw_text(32,64,string(sprite_get_number(_sprite)))
 </string>
           </argument>
         </arguments>

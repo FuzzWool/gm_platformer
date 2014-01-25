@@ -12,6 +12,8 @@
       <sprite>sprites\moth_walk</sprite>
       <sprite>sprites\moth_collision</sprite>
       <sprite>sprites\moth_slash</sprite>
+      <sprite>sprites\moth_jump_up</sprite>
+      <sprite>sprites\moth_jump_down</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background"/>
