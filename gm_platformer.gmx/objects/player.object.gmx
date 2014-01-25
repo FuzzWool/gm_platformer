@@ -36,6 +36,7 @@ _on_ground = false
 _sprite = moth_idle
 _frame = 0
 _animspeed = 0.3
+__old_sprite = _sprite
 </string>
           </argument>
         </arguments>
@@ -71,8 +72,14 @@ and move_y &lt; 0
 //STATES
 _on_ground = false
 if place_meeting(x,y+1,obj_solid){_on_ground = true}
-if move_x &gt; 0 {_facing_right = true}
-if move_x &lt; 0 {_facing_right = false}
+
+if not _slashing
+{
+    if move_x &gt; 0 {_facing_right = true}
+    if move_x &lt; 0 {_facing_right = false}
+}
+
+if _frame &gt;= sprite_get_number(_sprite)-1 {_slashing = false;}
 
 //CONTROLS
 //move
@@ -118,6 +125,9 @@ _x = x+8; _y = y
 _sprite=moth_idle; animspeed = 0.1
 if move_x != 0 and _on_ground{_sprite=moth_walk; _animspeed=0.3}
 if _slashing{_sprite=moth_slash; _animspeed = 0.3}
+//
+if _sprite != __old_sprite {_frame = 0;}
+__old_sprite = _sprite
 
 //draw
 _frame += _animspeed
