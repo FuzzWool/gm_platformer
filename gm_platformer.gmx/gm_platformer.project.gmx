@@ -7,14 +7,21 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\black_box</sprite>
-    <sprites name="moth">
-      <sprite>sprites\moth_idle</sprite>
-      <sprite>sprites\moth_walk</sprite>
-      <sprite>sprites\moth_collision</sprite>
-      <sprite>sprites\moth_slash</sprite>
-      <sprite>sprites\moth_jump_up</sprite>
-      <sprite>sprites\moth_jump_down</sprite>
-      <sprite>sprites\moth_jump_hover</sprite>
+    <sprites name="Players">
+      <sprites name="Moth">
+        <sprite>sprites\moth_idle</sprite>
+        <sprite>sprites\moth_walk</sprite>
+        <sprite>sprites\moth_collision</sprite>
+        <sprite>sprites\moth_slash</sprite>
+        <sprite>sprites\moth_jump_up</sprite>
+        <sprite>sprites\moth_jump_down</sprite>
+        <sprite>sprites\moth_jump_hover</sprite>
+      </sprites>
+    </sprites>
+    <sprites name="Enemies">
+      <sprites name="Noino">
+        <sprite>sprites\noino_idle</sprite>
+      </sprites>
     </sprites>
   </sprites>
   <backgrounds name="background"/>

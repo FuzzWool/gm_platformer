@@ -20,15 +20,16 @@ Features:
 	+ slash
 	+ jumping
 	+ hovering
+	+ tweak physics
 ============================================================================
-	! tweak physics
 
 	! Landing: squish, antenna bop
 	! Ceiling: squish, antenna flop
 
-! Plants
-
-	! Idle bouncing
+! Noino
+	. realized it was "onion" backwards, proceeded to feel dumb
+	
+	! Idle bouncing sprite
 	! Moves towards Moth
 
 
