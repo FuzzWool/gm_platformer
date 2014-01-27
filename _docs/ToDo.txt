@@ -20,23 +20,26 @@ Features:
 	+ slash
 	+ jumping
 	+ hovering
-	+ tweak physics
 ============================================================================
 
 	! Landing: squish, antenna bop
 	! Ceiling: squish, antenna flop
+	! Shield
+	! Wanderer's Wave
 
-! Noino
+
++ Noino
 	. realized it was "onion" backwards, proceeded to feel dumb
 	
-	! Idle bouncing sprite
-	! Moves towards Moth
+	+ Sprout, starts sprouting when Moth approaches
+	+ Idle, Bounces towards Moth
 
 
 ! Damage
 	! Moth > Plant: Plant splits apart
 	! Plant > Moth: Moth recoils, cannot move
-	! Health Bar
+		! gets pushed, little control locking, enables hover
+	! Moth's Health Bar
 
 ! Camera
 	! Camera snaps to Moth

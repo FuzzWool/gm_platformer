@@ -132,7 +132,7 @@ if keyboard_check_pressed(ord('X')){_slashing = true}
           <argument>
             <kind>1</kind>
             <string>//HITBOX
-//draw_me()
+draw_me()
 //draw_text(32,32,string(_frame))
 //draw_text(32,64,string(sprite_get_number(_sprite)))
 

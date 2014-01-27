@@ -20,8 +20,14 @@
     </sprites>
     <sprites name="Enemies">
       <sprites name="Noino">
-        <sprite>sprites\noino_bounce</sprite>
+        <sprite>sprites\spr_noino_bounce</sprite>
+        <sprite>sprites\spr_noino_sprout</sprite>
+        <sprite>sprites\spr_noino_sprouting</sprite>
       </sprites>
+    </sprites>
+    <sprites name="Boxes">
+      <sprite>sprites\spr_1x1</sprite>
+      <sprite>sprites\spr_5x5</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background"/>
@@ -33,9 +39,11 @@
   <objects name="objects">
     <object>objects\obj_player</object>
     <object>objects\obj_tile</object>
-    <object>objects\obj_solid</object>
-    <object>objects\obj_physics</object>
     <object>objects\obj_noino</object>
+    <objects name="Abstract">
+      <object>objects\obj_physics</object>
+      <object>objects\obj_solid</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
