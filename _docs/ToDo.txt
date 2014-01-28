@@ -20,12 +20,13 @@ Features:
 	+ slash
 	+ jumping
 	+ hovering
-============================================================================
 
+	----!!!----
 	! Landing: squish, antenna bop
 	! Ceiling: squish, antenna flop
 	! Shield
 	! Wanderer's Wave
+	-----------
 
 
 + Noino
@@ -33,7 +34,7 @@ Features:
 	
 	+ Sprout, starts sprouting when Moth approaches
 	+ Idle, Bounces towards Moth
-
+============================================================================
 
 ! Damage
 	! Moth > Plant: Plant splits apart

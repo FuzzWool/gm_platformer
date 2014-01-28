@@ -16,6 +16,7 @@
         <sprite>sprites\moth_jump_up</sprite>
         <sprite>sprites\moth_jump_down</sprite>
         <sprite>sprites\moth_jump_hover</sprite>
+        <sprite>sprites\moth_attackbox</sprite>
       </sprites>
     </sprites>
     <sprites name="Enemies">

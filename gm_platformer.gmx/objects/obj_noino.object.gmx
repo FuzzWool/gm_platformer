@@ -45,6 +45,10 @@ _sprite1 = spr_noino_sprout
 _frame = 0
 _animspeed = 0.3
 __old_sprite = _sprite1
+
+//HITBOXES
+hurtbox = sprite_index
+//_attackbox
 </string>
           </argument>
         </arguments>
@@ -111,11 +115,7 @@ if _sprouted
           <argument>
             <kind>1</kind>
             <string>//HITBOXES
-draw_me()
-//_c = (ins_Player.x+(ins_Player.sprite_width/2))-(sprite_width/2)
-//draw_text(32,32,string(_c))
-//draw_text(32,64,string(x))
-draw_text(32,32,sprite_get_name(_sprite1))
+//draw_me()
 
 //SPRITE
 _sprite1 = spr_noino_sprout
