@@ -1,0 +1,15 @@
+
+////MAKING THE FONT
+GM Font Editor > "create from strip"
+(w,h) 6,7
+96 per row, 96 images long
+"then that'll import the whole font into a sprite"
+////
+
+
+////USING THE FONT
+global.gamfont=font_add_sprite(SPR_FONT,ord(' '),1,1)
+draw_set_font(global.gamfont)
+
+draw_text_ext(x,y,string,6,width)
+////

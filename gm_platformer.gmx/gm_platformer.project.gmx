@@ -13,10 +13,10 @@
         <sprite>sprites\moth_walk</sprite>
         <sprite>sprites\moth_collision</sprite>
         <sprite>sprites\moth_slash</sprite>
+        <sprite>sprites\moth_slash_box</sprite>
         <sprite>sprites\moth_jump_up</sprite>
         <sprite>sprites\moth_jump_down</sprite>
         <sprite>sprites\moth_jump_hover</sprite>
-        <sprite>sprites\moth_attackbox</sprite>
       </sprites>
     </sprites>
     <sprites name="Enemies">
@@ -45,6 +45,7 @@
       <object>objects\obj_physics</object>
       <object>objects\obj_solid</object>
     </objects>
+    <object>objects\obj_player_swordbox</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>

@@ -42,6 +42,47 @@ __old_sprite = _sprite
 _hover_sprite = moth_jump_hover
 _hover_frame = 0
 _hover_animspeed = 0.5
+
+//
+
+_swordbox = false
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//////////////
+//ATTACKBOX
+
+//Destroy
+if _swordbox != false
+{
+    with (_swordbox) { instance_destroy(); } 
+    _swordbox = false
+}
+//Create
+if _sprite == moth_slash and _swordbox == false
+{_swordbox = instance_create(x,y,obj_player_swordbox)}
+//Use
+if _swordbox != false
+{_swordbox.x=x; _swordbox.y=y}
 </string>
           </argument>
         </arguments>
@@ -75,6 +116,7 @@ if place_meeting(x,y-1,obj_solid)
 and move_y &lt; 0
 {move_y = 0;}
 
+
 //STATES
 //ground
 _on_ground = false
@@ -89,6 +131,7 @@ if not _slashing
 if _frame &gt;= sprite_get_number(_sprite)-1 {_slashing = false;}
 //hover
 if _on_ground{_hovering = false}
+
 
 
 //CONTROLS
@@ -106,7 +149,6 @@ if keyboard_check_released(ord('Z')) and not _hovering
 {
     if move_y &lt;= 0 {move_y += 1.5;}
 }
-
 //slash
 if keyboard_check_pressed(ord('X')){_slashing = true}
 </string>
@@ -131,7 +173,11 @@ if keyboard_check_pressed(ord('X')){_slashing = true}
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//direction, origin
+            <string>if _swordbox != false
+{draw_text(100,100,_frame)}
+//draw_text(100,100,"test");
+
+//direction, origin
 if _facing_right == true {_flip = 1}
 if _facing_right == false {_flip = -1}
 _x = x+5; _y = y+14
@@ -139,8 +185,6 @@ _x = x+5; _y = y+14
 
 //HITBOX
 draw_me()
-
-//MAIN SPRITES
 
 //WINGS
 if _hovering
@@ -152,7 +196,7 @@ if _hovering
 }
 
 //MOTH
-_sprite=moth_idle; animspeed = 0.1
+_sprite=moth_idle; _animspeed = 0.1
 if move_x != 0 and _on_ground{_sprite=moth_walk; _animspeed=0.3}
 if not _on_ground
 {
