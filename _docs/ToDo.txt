@@ -34,13 +34,12 @@ Features:
 	
 	+ Sprout, starts sprouting when Moth approaches
 	+ Idle, Bounces towards Moth
-============================================================================
 
 ! Damage
 	! Moth > Plant: Plant splits apart
-		! Attackbox > Painbox
-			+ destroys Noino
-			! Noino's Painbox should not appear until it is active
+		+ Destroys Noino
+============================================================================
+		! Creates split-apart segments (which bounce!)
 
 	! Plant > Moth: Moth recoils, cannot move
 		! gets pushed, little control locking, enables hover

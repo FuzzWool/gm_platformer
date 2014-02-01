@@ -41,7 +41,7 @@ slow_x = 0
 slow_y = 0
 
 //hitboxes
-painbox = sprite_index
+painbox = false
 
 //////////////////////
 //PRIVATE
@@ -89,6 +89,7 @@ and _frame &gt;= sprite_get_number(_sprite1)-1
     _sprouted = true
     sprite_index = spr_1x1
     x += 32; y += 32
+    painbox = sprite_index
 }
 
 

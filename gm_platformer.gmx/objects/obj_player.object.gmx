@@ -104,8 +104,11 @@ if swordbox != false
 {
     with obj_group_enemy
     {
-        if place_meeting(x,y,ins_Player.swordbox)
-        {instance_destroy()}
+        if painbox != false
+        {
+            if place_meeting(x,y,ins_Player.swordbox)
+            {instance_destroy()}
+        }
     }
 }
 </string>
