@@ -46,6 +46,7 @@ _hover_animspeed = 0.5
 //
 
 _swordbox = false
+__can_create_swordbox = true
 </string>
           </argument>
         </arguments>
@@ -71,6 +72,9 @@ _swordbox = false
             <string>//////////////
 //ATTACKBOX
 
+//(Reset state)
+if _sprite != moth_slash {__can_create_swordbox = true}
+
 //Destroy
 if _swordbox != false
 {
@@ -78,10 +82,12 @@ if _swordbox != false
     _swordbox = false
 }
 //Create
-if _sprite == moth_slash and _swordbox == false
+if _sprite == moth_slash and _swordbox == false and _frame &gt; 1
+and __can_create_swordbox
 {
     _swordbox = instance_create(x,y,obj_player_swordbox)
     if not _facing_right{_swordbox.image_xscale=-1}
+    __can_create_swordbox = false
 }
 //Use
 if _swordbox != false
