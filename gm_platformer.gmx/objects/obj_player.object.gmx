@@ -69,8 +69,7 @@ __can_create_swordbox = true
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//////////////
-//DEAL DAMAGE
+            <string>//DEAL DAMAGE
 
 //ATTACKBOX
 //(Reset state)
@@ -100,6 +99,7 @@ if swordbox != false
 }
 
 //ATTACK ENEMIES
+//sword
 if swordbox != false
 {
     with obj_group_enemy
@@ -107,7 +107,7 @@ if swordbox != false
         if painbox != false
         {
             if place_meeting(x,y,ins_Player.swordbox)
-            {instance_destroy()}
+            {killed=true}
         }
     }
 }

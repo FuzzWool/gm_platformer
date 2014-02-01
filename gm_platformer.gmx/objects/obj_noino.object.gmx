@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//////////////////////
+            <string>event_inherited()
+
+//////////////////////
 //PUBLIC
 
 //ins_Player
