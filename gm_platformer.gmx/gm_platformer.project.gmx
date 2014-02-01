@@ -44,6 +44,7 @@
     <objects name="Abstract">
       <object>objects\obj_physics</object>
       <object>objects\obj_solid</object>
+      <object>objects\obj_group_enemy</object>
     </objects>
     <object>objects\obj_player_swordbox</object>
   </objects>

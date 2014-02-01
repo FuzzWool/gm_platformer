@@ -45,7 +45,7 @@ _hover_animspeed = 0.5
 
 //
 
-_swordbox = false
+swordbox = instance_create(x,y,obj_player_swordbox)
 __can_create_swordbox = true
 </string>
           </argument>
@@ -70,32 +70,43 @@ __can_create_swordbox = true
           <argument>
             <kind>1</kind>
             <string>//////////////
-//ATTACKBOX
+//DEAL DAMAGE
 
+//ATTACKBOX
 //(Reset state)
-if _sprite != moth_slash {__can_create_swordbox = true}
+if _sprite != moth_slash {__can_createswordbox = true}
 
 //Destroy
-if _swordbox != false
+if swordbox != false
 {
-    with (_swordbox) { instance_destroy(); } 
-    _swordbox = false
+    with (swordbox) { instance_destroy(); } 
+    swordbox = false
 }
 //Create
-if _sprite == moth_slash and _swordbox == false and _frame &gt; 1
-and __can_create_swordbox
+if _sprite == moth_slash and swordbox == false and _frame &gt; 1
+and __can_createswordbox
 {
-    _swordbox = instance_create(x,y,obj_player_swordbox)
-    if not _facing_right{_swordbox.image_xscale=-1}
-    __can_create_swordbox = false
+    swordbox = instance_create(x,y,obj_player_swordbox)
+    if not _facing_right{swordbox.image_xscale=-1}
+    __can_createswordbox = false
 }
 //Use
-if _swordbox != false
+if swordbox != false
 {
     if _facing_right{_x = x}
     if not _facing_right{_x = x + sprite_width}
-    _swordbox.x=_x
-    _swordbox.y=y
+    swordbox.x=_x
+    swordbox.y=y
+}
+
+//ATTACK ENEMIES
+if swordbox != false
+{
+    with obj_group_enemy
+    {
+        if place_meeting(x,y,ins_Player.swordbox)
+        {instance_destroy()}
+    }
 }
 </string>
           </argument>
@@ -187,10 +198,7 @@ if keyboard_check_pressed(ord('X')){_slashing = true}
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if _swordbox != false
-{draw_text(100,100,_frame)}
-//draw_text(100,100,"test");
-
+            <string>
 //direction, origin
 if _facing_right == true {_flip = 1}
 if _facing_right == false {_flip = -1}

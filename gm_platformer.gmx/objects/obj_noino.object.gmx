@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>obj_physics</parentName>
+  <parentName>obj_group_enemy</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,7 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//PHYSICS
+            <string>//////////////////////
+//PUBLIC
+
+//ins_Player
+
+//physics
 move_x = 0
 move_y = 0
 
@@ -34,6 +39,12 @@ cap_y = 7.5
 
 slow_x = 0
 slow_y = 0
+
+//hitboxes
+painbox = sprite_index
+
+//////////////////////
+//PRIVATE
 
 //STATES
 _sprouting = false
@@ -45,10 +56,6 @@ _sprite1 = spr_noino_sprout
 _frame = 0
 _animspeed = 0.3
 __old_sprite = _sprite1
-
-//HITBOXES
-hurtbox = sprite_index
-//_attackbox
 </string>
           </argument>
         </arguments>
