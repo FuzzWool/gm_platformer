@@ -79,10 +79,18 @@ if _swordbox != false
 }
 //Create
 if _sprite == moth_slash and _swordbox == false
-{_swordbox = instance_create(x,y,obj_player_swordbox)}
+{
+    _swordbox = instance_create(x,y,obj_player_swordbox)
+    if not _facing_right{_swordbox.image_xscale=-1}
+}
 //Use
 if _swordbox != false
-{_swordbox.x=x; _swordbox.y=y}
+{
+    if _facing_right{_x = x}
+    if not _facing_right{_x = x + sprite_width}
+    _swordbox.x=_x
+    _swordbox.y=y
+}
 </string>
           </argument>
         </arguments>
