@@ -58,6 +58,45 @@ _sprite1 = spr_noino_sprout
 _frame = 0
 _animspeed = 0.3
 __old_sprite = _sprite1
+
+//Sliced
+_just_killed = false
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//In it's final breath, it spawns splits.
+if killed
+{
+    _split1 = instance_create(x+8,y-8,_obj_noino_split)
+    _split2 = instance_create(x+8,y+0,_obj_noino_split)
+    _split1.sprite_index = spr_noino_split1
+    _split2.sprite_index = spr_noino_split2
+    _split1.move_y -= 4
+    _split2.move_y -= 2
+    _split1.move_x = 1
+    _split1.slow_x = 0.01
+}
+//...Then dies for good. RIP.
+if killed{instance_destroy()}
 </string>
           </argument>
         </arguments>

@@ -24,6 +24,8 @@
         <sprite>sprites\spr_noino_bounce</sprite>
         <sprite>sprites\spr_noino_sprout</sprite>
         <sprite>sprites\spr_noino_sprouting</sprite>
+        <sprite>sprites\spr_noino_split1</sprite>
+        <sprite>sprites\spr_noino_split2</sprite>
       </sprites>
     </sprites>
     <sprites name="Boxes">
@@ -38,13 +40,18 @@
     <script>scripts\move_push.gml</script>
   </scripts>
   <objects name="objects">
-    <object>objects\obj_player</object>
     <object>objects\obj_tile</object>
-    <object>objects\obj_noino</object>
+    <object>objects\obj_player</object>
+    <objects name="Enemies">
+      <objects name="Noino">
+        <object>objects\obj_noino</object>
+        <object>objects\_obj_noino_split</object>
+      </objects>
+      <object>objects\obj_group_enemy</object>
+    </objects>
     <objects name="Abstract">
       <object>objects\obj_physics</object>
       <object>objects\obj_solid</object>
-      <object>objects\obj_group_enemy</object>
     </objects>
     <object>objects\obj_player_swordbox</object>
   </objects>
