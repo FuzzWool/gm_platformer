@@ -33,6 +33,18 @@ _hovering = false
 _facing_right = false
 _on_ground = false
 
+//END STEP
+//damage
+swordbox = instance_create(x,y,obj_player_swordbox)
+__can_create_swordbox = true
+//pain
+_pain = 0
+_painbox = instance_create(x,y,_obj_player_painbox)
+_in_pain = false
+_was_in_pain = _in_pain
+_pain_time = 0
+_pain_time_end = 0.2
+
 //DRAW
 _sprite = moth_idle
 _frame = 0
@@ -42,11 +54,6 @@ __old_sprite = _sprite
 _hover_sprite = moth_jump_hover
 _hover_frame = 0
 _hover_animspeed = 0.5
-
-//
-
-swordbox = instance_create(x,y,obj_player_swordbox)
-__can_create_swordbox = true
 </string>
           </argument>
         </arguments>
@@ -73,7 +80,7 @@ __can_create_swordbox = true
 
 //ATTACKBOX
 //(Reset state)
-if _sprite != moth_slash {__can_createswordbox = true}
+if _sprite != moth_slash {__can_create_swordbox = true}
 
 //Destroy
 if swordbox != false
@@ -83,11 +90,11 @@ if swordbox != false
 }
 //Create
 if _sprite == moth_slash and swordbox == false and _frame &gt; 1
-and __can_createswordbox
+and __can_create_swordbox
 {
     swordbox = instance_create(x,y,obj_player_swordbox)
     if not _facing_right{swordbox.image_xscale=-1}
-    __can_createswordbox = false
+    __can_create_swordbox = false
 }
 //Use
 if swordbox != false
@@ -111,6 +118,55 @@ if swordbox != false
         }
     }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//PAIN
+
+//Position painbox.
+_painbox.x = x; _painbox.y = y
+
+//Grab damage from enemies.
+with obj_group_enemy
+{
+    if attackbox != false
+    {
+        if place_meeting(x,y,ins_Player._painbox)
+        {
+            if ins_Player._in_pain == false
+            {                
+                ins_Player._in_pain = true
+            }
+        }
+    }
+}
+
+//STATE - wince in pain.
+//Start
+if not _was_in_pain and _in_pain{_pain_time = 0}
+//Progress
+if _in_pain{_pain_time += 1}
+//Stop
+if _pain_time/60 &gt; _pain_time_end{_in_pain = false}
+//
+_was_in_pain = _in_pain
 </string>
           </argument>
         </arguments>
@@ -164,21 +220,24 @@ if _on_ground{_hovering = false}
 
 //CONTROLS
 //move
-if keyboard_check(vk_left){move_x -= 1}
-if keyboard_check(vk_right){move_x += 1}
-//jump
-if keyboard_check_pressed(ord('Z'))
+if not _in_pain
 {
-    if not _on_ground and not _hovering{move_y = -3; _hovering = true}
-    if _on_ground{move_y = -4.5;}
+    if keyboard_check(vk_left){move_x -= 1}
+    if keyboard_check(vk_right){move_x += 1}
+    //jump
+    if keyboard_check_pressed(ord('Z'))
+    {
+        if not _on_ground and not _hovering{move_y = -3; _hovering = true}
+        if _on_ground{move_y = -4.5;}
+    }
+    //jump height
+    if keyboard_check_released(ord('Z')) and not _hovering
+    {
+        if move_y &lt;= 0 {move_y += 1.5;}
+    }
+    //slash
+    if keyboard_check_pressed(ord('X')){_slashing = true}
 }
-//jump height
-if keyboard_check_released(ord('Z')) and not _hovering
-{
-    if move_y &lt;= 0 {move_y += 1.5;}
-}
-//slash
-if keyboard_check_pressed(ord('X')){_slashing = true}
 </string>
           </argument>
         </arguments>
@@ -201,15 +260,14 @@ if keyboard_check_pressed(ord('X')){_slashing = true}
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-//direction, origin
+            <string>//direction, origin
 if _facing_right == true {_flip = 1}
 if _facing_right == false {_flip = -1}
 _x = x+5; _y = y+14
 
 
 //HITBOX
-draw_me()
+//draw_me()
 
 //WINGS
 if _hovering
@@ -229,6 +287,8 @@ if not _on_ground
     if move_y &lt;= 0 {_sprite=moth_jump_up;}
 }
 if _slashing{_sprite=moth_slash; _animspeed = 0.4}
+if _in_pain{_sprite=moth_pain;}
+
 //(reset frame)
 if _sprite != __old_sprite {_frame = 0;}
 __old_sprite = _sprite
@@ -238,6 +298,9 @@ _frame += _animspeed
 _frame = _frame mod sprite_get_number(_sprite)
 draw_sprite_ext
 (_sprite, _frame, _x,_y, _flip,1, 0, c_white, 255 );
+
+
+//with _painbox{draw_me()}
 </string>
           </argument>
         </arguments>

@@ -17,6 +17,8 @@
         <sprite>sprites\moth_jump_up</sprite>
         <sprite>sprites\moth_jump_down</sprite>
         <sprite>sprites\moth_jump_hover</sprite>
+        <sprite>sprites\moth_painbox</sprite>
+        <sprite>sprites\moth_pain</sprite>
       </sprites>
     </sprites>
     <sprites name="Enemies">
@@ -41,7 +43,11 @@
   </scripts>
   <objects name="objects">
     <object>objects\obj_tile</object>
-    <object>objects\obj_player</object>
+    <objects name="Player">
+      <object>objects\obj_player</object>
+      <object>objects\obj_player_swordbox</object>
+      <object>objects\_obj_player_painbox</object>
+    </objects>
     <objects name="Enemies">
       <objects name="Noino">
         <object>objects\obj_noino</object>
@@ -53,7 +59,6 @@
       <object>objects\obj_physics</object>
       <object>objects\obj_solid</object>
     </objects>
-    <object>objects\obj_player_swordbox</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>

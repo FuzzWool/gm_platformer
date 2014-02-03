@@ -44,6 +44,7 @@ slow_y = 0
 
 //hitboxes
 painbox = false
+attackbox = false
 
 //////////////////////
 //PRIVATE
@@ -83,7 +84,8 @@ _just_killed = false
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//In it's final breath, it spawns splits.
+            <string>//PAIN
+//In it's final breath, it spawns splits.
 if killed
 {
     _split1 = instance_create(x+8,y-8,_obj_noino_split)
@@ -92,11 +94,17 @@ if killed
     _split2.sprite_index = spr_noino_split2
     _split1.move_y -= 4
     _split2.move_y -= 2
-    _split1.move_x = 1
+    
+    if not _facing_right{_split1.move_x = +1}
+    else{_split1.move_x = -1}
     _split1.slow_x = 0.01
 }
 //...Then dies for good. RIP.
 if killed{instance_destroy()}
+
+//ATTACK
+//if place_meeting(x,y,ins_Player.swordbox)
+//{killed=true}
 </string>
           </argument>
         </arguments>
@@ -131,6 +139,7 @@ and _frame &gt;= sprite_get_number(_sprite1)-1
     sprite_index = spr_1x1
     x += 32; y += 32
     painbox = sprite_index
+    attackbox = sprite_index
 }
 
 
