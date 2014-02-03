@@ -36,13 +36,9 @@ Features:
 	+ Idle, Bounces towards Moth
 
 ! Damage
-	! Moth > Plant: Plant splits apart
-		+ Destroys Noino
+	+ Moth > Plant: Plant splits apart
+	+ Plant > Moth: Moth recoils, cannot move
 ============================================================================
-		! Creates split-apart segments (which bounce!)
-
-	! Plant > Moth: Moth recoils, cannot move
-		! gets pushed, little control locking, enables hover
 	! Moth's Health Bar
 
 ! Camera

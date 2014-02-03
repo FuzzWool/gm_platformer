@@ -28,22 +28,23 @@
             <string>event_inherited()
 
 //BEGIN STEP
+//controls/major states
 _slashing = false
 _hovering = false
 _facing_right = false
 _on_ground = false
-
-//END STEP
-//damage
-swordbox = instance_create(x,y,obj_player_swordbox)
-__can_create_swordbox = true
 //pain
 _pain = 0
 _painbox = instance_create(x,y,_obj_player_painbox)
 _in_pain = false
 _was_in_pain = _in_pain
 _pain_time = 0
-_pain_time_end = 0.2
+_pain_time_end = 0.3
+
+//END STEP
+//damage
+swordbox = instance_create(x,y,obj_player_swordbox)
+__can_create_swordbox = true
 
 //DRAW
 _sprite = moth_idle
@@ -122,55 +123,6 @@ if swordbox != false
           </argument>
         </arguments>
       </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>//PAIN
-
-//Position painbox.
-_painbox.x = x; _painbox.y = y
-
-//Grab damage from enemies.
-with obj_group_enemy
-{
-    if attackbox != false
-    {
-        if place_meeting(x,y,ins_Player._painbox)
-        {
-            if ins_Player._in_pain == false
-            {                
-                ins_Player._in_pain = true
-            }
-        }
-    }
-}
-
-//STATE - wince in pain.
-//Start
-if not _was_in_pain and _in_pain{_pain_time = 0}
-//Progress
-if _in_pain{_pain_time += 1}
-//Stop
-if _pain_time/60 &gt; _pain_time_end{_in_pain = false}
-//
-_was_in_pain = _in_pain
-</string>
-          </argument>
-        </arguments>
-      </action>
     </event>
     <event eventtype="3" enumb="1">
       <action>
@@ -190,6 +142,8 @@ _was_in_pain = _in_pain
           <argument>
             <kind>1</kind>
             <string>//PHYSICS
+slow_x = 0.25
+
 if _hovering == false {move_y += 0.25}
 if _hovering == true  {move_y += 0.25}
 //reset on floor
@@ -238,6 +192,66 @@ if not _in_pain
     //slash
     if keyboard_check_pressed(ord('X')){_slashing = true}
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//PAIN
+
+//Position painbox.
+_painbox.x = x; _painbox.y = y
+
+//Grab damage from enemies.
+with obj_group_enemy
+{
+    if attackbox != false
+    {
+        if place_meeting(x,y,ins_Player._painbox)
+        {
+            if ins_Player._in_pain == false
+            {
+                //move
+                c1 = ins_Player.x+(ins_Player.sprite_width/2)
+                c2 = x+(sprite_width/2)
+                if c1 &gt;= c2{ins_Player.move_x = +5;_facing_right=false}
+                else       {ins_Player.move_x = -5;_facing_right=true}
+                ins_Player.move_y = -4.5
+                //hover
+                ins_Player._hovering = false
+                //pain
+                ins_Player._in_pain = true
+            }
+        }
+    }
+}
+if _in_pain
+{ins_Player.slow_x = 0.1}
+
+//STATE - wince in pain.
+//Start
+if not _was_in_pain and _in_pain{_pain_time = 0}
+//Progress
+if _in_pain{_pain_time += 1}
+//Stop
+if _pain_time/60 &gt; _pain_time_end{_in_pain = false}
+//
+_was_in_pain = _in_pain
 </string>
           </argument>
         </arguments>
