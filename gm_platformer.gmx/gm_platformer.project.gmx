@@ -40,6 +40,9 @@
       <sprite>sprites\spr_1x1</sprite>
       <sprite>sprites\spr_5x5</sprite>
     </sprites>
+    <sprites name="SFX">
+      <sprite>sprites\spr_slash</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -67,6 +70,9 @@
     <objects name="Abstract">
       <object>objects\obj_physics</object>
       <object>objects\obj_solid</object>
+    </objects>
+    <objects name="SFX">
+      <object>objects\obj_slash</object>
     </objects>
   </objects>
   <rooms name="rooms">

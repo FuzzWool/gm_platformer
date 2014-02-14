@@ -119,8 +119,18 @@ if swordbox != false
             {
                 pain=1
                 //mmm, satisfying
-                ins_Player.move_x -= 20
-                room_speed = 15
+                __move = 4
+                if ins_Player._facing_right{ins_Player.move_x = -__move}
+                else{ins_Player.move_x = +__move}
+                //
+                room_speed = 30
+                //
+                __sword = ins_Player.swordbox
+                if ins_Player._facing_right{__x = __sword.x + 30}
+                else{__x = __sword.x - 30}
+                __y = __sword.y + (__sword.sprite_height/2)
+                __sfx = instance_create(__x,__y,obj_slash)
+                __sfx.depth = -9
             }
         }
     }

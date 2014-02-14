@@ -1,0 +1,1 @@
+return sprite_width
