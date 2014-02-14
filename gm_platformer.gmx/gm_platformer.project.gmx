@@ -29,6 +29,12 @@
         <sprite>sprites\spr_noino_split1</sprite>
         <sprite>sprites\spr_noino_split2</sprite>
       </sprites>
+      <sprites name="Frog">
+        <sprite>sprites\spr_frog_idle</sprite>
+        <sprite>sprites\spr_frog_pain</sprite>
+        <sprite>sprites\spr_frog_die</sprite>
+        <sprite>sprites\spr_frog_croak</sprite>
+      </sprites>
     </sprites>
     <sprites name="Boxes">
       <sprite>sprites\spr_1x1</sprite>
@@ -52,6 +58,9 @@
       <objects name="Noino">
         <object>objects\obj_noino</object>
         <object>objects\_obj_noino_split</object>
+      </objects>
+      <objects name="Frog">
+        <object>objects\obj_frog</object>
       </objects>
       <object>objects\obj_group_enemy</object>
     </objects>
