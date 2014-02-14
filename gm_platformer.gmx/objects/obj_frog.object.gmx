@@ -63,7 +63,7 @@ _facing_right = false
 
 //Wince
 if pain &gt; 0{sprite_index = spr_frog_pain; image_index = 0}
-if pain == 0 and sprite_index == spr_frog_pain and image_index &gt;= 3
+if pain == 0 and sprite_index == spr_frog_pain and image_index &gt;= 2
 {sprite_index = spr_frog_idle}
 
 //OVERALL HEALTH

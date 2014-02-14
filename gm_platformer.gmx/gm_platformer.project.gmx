@@ -23,11 +23,13 @@
     </sprites>
     <sprites name="Enemies">
       <sprites name="Noino">
-        <sprite>sprites\spr_noino_bounce</sprite>
         <sprite>sprites\spr_noino_sprout</sprite>
         <sprite>sprites\spr_noino_sprouting</sprite>
         <sprite>sprites\spr_noino_split1</sprite>
         <sprite>sprites\spr_noino_split2</sprite>
+        <sprite>sprites\spr_noino_bounce</sprite>
+        <sprite>sprites\spr_noino_air_up</sprite>
+        <sprite>sprites\spr_noino_air_down</sprite>
       </sprites>
       <sprites name="Frog">
         <sprite>sprites\spr_frog_idle</sprite>
@@ -59,8 +61,9 @@
     </objects>
     <objects name="Enemies">
       <objects name="Noino">
-        <object>objects\obj_noino</object>
+        <object>objects\obj_old_noino</object>
         <object>objects\_obj_noino_split</object>
+        <object>objects\obj_noino</object>
       </objects>
       <objects name="Frog">
         <object>objects\obj_frog</object>
