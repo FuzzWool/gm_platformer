@@ -31,7 +31,7 @@
 //PUBLIC
 
 //damage/pain
-hp = 10
+hp = 5
 pain = 0
 painbox = false
 attackbox = false
