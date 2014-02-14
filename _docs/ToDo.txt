@@ -35,11 +35,20 @@ Features:
 	+ Sprout, starts sprouting when Moth approaches
 	+ Idle, Bounces towards Moth
 
-! Damage
++ Damage
 	+ Moth > Plant: Plant splits apart
 	+ Plant > Moth: Moth recoils, cannot move
 ============================================================================
-	! Moth's Health Bar
+
+! remake Noino
+	! bounces off of the ground
+
+! Frog
+! Dedant
+	! Sprites
+
+
+! UI (See SS)
 
 ! Camera
 	! Camera snaps to Moth
