@@ -115,7 +115,7 @@ if swordbox != false
         if painbox != false
         {
             if place_meeting(x,y,ins_Player.swordbox)
-            {killed=true}
+            {pain=1}
         }
     }
 }

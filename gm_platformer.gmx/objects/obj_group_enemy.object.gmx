@@ -31,10 +31,10 @@
 //PUBLIC
 
 //damage/pain
+hp = 10
+pain = 0
 painbox = false
 attackbox = false
-damage = 1
-killed = false
 
 //////////////////////////////
 //PRIVATE
@@ -62,7 +62,7 @@ killed = false
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if killed{instance_destroy()}
+            <string>if hp==0{instance_destroy()}
 </string>
           </argument>
         </arguments>

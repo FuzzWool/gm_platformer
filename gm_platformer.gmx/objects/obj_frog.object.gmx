@@ -61,16 +61,25 @@ _facing_right = false
             <kind>1</kind>
             <string>//PAIN
 
-//People die when they are killed.
-if killed and sprite_index != spr_frog_die
+//Wince
+if pain &gt; 0{sprite_index = spr_frog_pain; image_index = 0}
+if pain == 0 and sprite_index == spr_frog_pain and image_index &gt;= 3
+{sprite_index = spr_frog_idle}
+
+//OVERALL HEALTH
+hp -= pain; pain = 0
+if hp &lt;= 0 {hp = 0}
+
+//Die in agony
+if hp == 0 and sprite_index != spr_frog_die
 {
     sprite_index = spr_frog_die
     image_index = 0
     image_speed = 0.2;
     attackbox = false; painbox = false
 }
-//...Then dies for good. RIP.
-if killed and sprite_index == spr_frog_die and image_index &gt;= 17
+//Disappear
+if hp == 0 and sprite_index == spr_frog_die and image_index &gt;= 17
 {instance_destroy()}
 </string>
           </argument>
