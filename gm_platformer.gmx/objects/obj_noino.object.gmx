@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited()
+depth = -3
 
 //////////////////////
 //PUBLIC
@@ -92,8 +93,11 @@ if hp==0
     _split2 = instance_create(x,y-16,_obj_noino_split)
     _split1.sprite_index = spr_noino_split1
     _split2.sprite_index = spr_noino_split2
-    _split1.move_y = -abs((move_y)*1.5)
-    _split2.move_y = +abs((move_y)*1.5)
+    __y = move_y
+    if __y &gt; 0{__y = 0}
+    _split1.move_y = __y-2
+    _split2.move_y = __y-1
+    _split1.depth = -2; _split2.depth = -2
     __x = 0
     if not _facing_right{_split1.move_x = -abs(__x)}
     else{_split1.move_x = +abs(__x)}
@@ -163,9 +167,7 @@ else{slow_x = 0}
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_text(100,100,pain)
-
-//direction, origin
+            <string>//direction, origin
 if _facing_right == true {_flip = 1}
 if _facing_right == false {_flip = -1}
 _x = x+0; _y = y+0
