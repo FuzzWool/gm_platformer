@@ -30,6 +30,7 @@
         <sprite>sprites\spr_noino_bounce</sprite>
         <sprite>sprites\spr_noino_air_up</sprite>
         <sprite>sprites\spr_noino_air_down</sprite>
+        <sprite>sprites\spr_noino_collision</sprite>
       </sprites>
       <sprites name="Frog">
         <sprite>sprites\spr_frog_idle</sprite>
