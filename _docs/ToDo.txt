@@ -1,4 +1,4 @@
-LIGHT LABYRINTH DEMO - "Plants!"
+LIGHT LABYRINTH - 1ST STAGE DEMO
 ----------------------------------------------------------------------------
 Features:
 * Moth! He can double-jump, swipe his sword and prime his shield.
@@ -21,31 +21,19 @@ Features:
 	+ jumping
 	+ hovering
 
-	----!!!----
-	! Landing: squish, antenna bop
-	! Ceiling: squish, antenna flop
-	! Shield
-	! Wanderer's Wave
-	-----------
-
-
 + Noino
-	. realized it was "onion" backwards, proceeded to feel dumb
-	
-	+ Sprout, starts sprouting when Moth approaches
-	+ Idle, Bounces towards Moth
-
-+ Damage
-	+ Moth > Plant: Plant splits apart
-	+ Plant > Moth: Moth recoils, cannot move
-============================================================================
-
-! remake Noino
-	! bounces off of the ground
-
 ! Frog
+	! limit Noino spawning
+=========================================================================
+
+! Moth
+	! Wanderer's Wave
+
 ! Dedant
-	! Sprites
+
+! Orbs
+
+! More enemy ideas... for Nuking and Trapping.
 
 
 ! UI (See SS)
@@ -60,3 +48,7 @@ Features:
 	! Parallaxed background (3 layers)
 	! Color transition settings (Gradiented colors are set in each room)
 	! 'Static' backround (1 layer, the sun)
+
+
+
+! Boss: Noino King

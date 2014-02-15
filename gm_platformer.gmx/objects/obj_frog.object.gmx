@@ -33,6 +33,7 @@ depth = -1
 image_speed = 0.2;
 
 //attack/pain
+hp = 999
 painbox = sprite_index
 attackbox = sprite_index
 
