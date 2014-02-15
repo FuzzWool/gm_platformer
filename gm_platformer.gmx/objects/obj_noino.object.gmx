@@ -30,6 +30,18 @@
 //////////////////////
 //PUBLIC
 
+//physics
+
+//The absolute limits of a movement. May never exceed.
+cap_x = 2.5
+cap_y = 7.5
+
+//The amount the move values go towards 'normalizing' each loop.
+slow_x = 0.1
+slow_y = 0
+
+
+//
 hp = 1
 _facing_right = true
 
@@ -80,11 +92,12 @@ if hp==0
     _split2 = instance_create(x,y-16,_obj_noino_split)
     _split1.sprite_index = spr_noino_split1
     _split2.sprite_index = spr_noino_split2
-    _split1.move_y += move_y-2
-    _split2.move_y += move_y-1
-    if not _facing_right{_split1.move_x = +1}
-    else{_split1.move_x = -1}
-    _split1.slow_x = 0.01
+    _split1.move_y = -abs((move_y)*1.5)
+    _split2.move_y = +abs((move_y)*1.5)
+    __x = 0
+    if not _facing_right{_split1.move_x = -abs(__x)}
+    else{_split1.move_x = +abs(__x)}
+    _split1.slow_x = 0.005
     //
     instance_destroy()
 }
