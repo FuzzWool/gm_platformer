@@ -37,7 +37,7 @@ cap_x = 2.5
 cap_y = 7.5
 
 //The amount the move values go towards 'normalizing' each loop.
-slow_x = 0.1
+slow_x = 0
 slow_y = 0
 
 
@@ -126,10 +126,21 @@ if hp==0
             <string>//Gravity
 move_y += 0.25
 
-//Touching the ground.
-if _sprite == spr_noino_bounce and _frame == 3
+//Jumping!
+if _sprite == spr_noino_bounce and _frame &gt;= 5
 and place_meeting(x,y+1,obj_solid)
-{move_y = -4}
+{
+    move_y = -3
+
+        //Move towards Moth!
+    _c = (ins_Player.x+(ins_Player.sprite_width/2))-(sprite_width/2)
+    if x &lt; _c {move_x += 1; _facing_right = false}
+    if x &gt; _c {move_x -= 1; _facing_right = true}
+}
+
+//Slowdown!
+if place_meeting(x,y+1,obj_solid){slow_x = 0.25}
+else{slow_x = 0}
 </string>
           </argument>
         </arguments>
