@@ -62,7 +62,13 @@ attackbox = false
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if hp==0{instance_destroy()}
+            <string>//HEALTH
+//loss
+//OVERALL HEALTH
+hp -= pain; pain = 0
+if hp &lt;= 0 {hp = 0}
+//die
+if hp==0{instance_destroy()}
 </string>
           </argument>
         </arguments>

@@ -30,6 +30,7 @@
 //////////////////////
 //PUBLIC
 
+hp = 1
 _facing_right = true
 
 
@@ -41,6 +42,52 @@ _sprite = spr_noino_bounce
 _frame = 0
 _animspeed = 0.3
 __old_sprite = _sprite
+
+//PAIN/ATTACK
+painbox = sprite_index
+attackbox = sprite_index
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//HEALTH
+
+//loss
+hp -= pain; pain = 0
+if hp &lt;= 0 {hp = 0}
+//die
+if hp==0
+{
+    _split1 = instance_create(x,y-24,_obj_noino_split)
+    _split2 = instance_create(x,y-16,_obj_noino_split)
+    _split1.sprite_index = spr_noino_split1
+    _split2.sprite_index = spr_noino_split2
+    _split1.move_y += move_y-2
+    _split2.move_y += move_y-1
+    if not _facing_right{_split1.move_x = +1}
+    else{_split1.move_x = -1}
+    _split1.slow_x = 0.01
+    //
+    instance_destroy()
+}
 </string>
           </argument>
         </arguments>
@@ -67,7 +114,8 @@ __old_sprite = _sprite
 move_y += 0.25
 
 //Touching the ground.
-if place_meeting(x,y+1,obj_solid)
+if _sprite == spr_noino_bounce and _frame == 3
+and place_meeting(x,y+1,obj_solid)
 {move_y = -4}
 </string>
           </argument>
@@ -91,13 +139,28 @@ if place_meeting(x,y+1,obj_solid)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//direction, origin
+            <string>draw_text(100,100,pain)
+
+//direction, origin
 if _facing_right == true {_flip = 1}
 if _facing_right == false {_flip = -1}
 _x = x+0; _y = y+0
 
 //HITBOX
 //draw_me()
+
+//SPRITE
+if place_meeting(x,y+1,obj_solid){_sprite = spr_noino_bounce}
+else
+{
+    if move_y &lt; 0{_sprite = spr_noino_air_up1}
+    if move_y &gt; 0{_sprite = spr_noino_air_down1}
+}
+
+
+//(reset frame)
+if _sprite != __old_sprite {_frame = 0;}
+__old_sprite = _sprite
 
 //draw
 _frame += _animspeed

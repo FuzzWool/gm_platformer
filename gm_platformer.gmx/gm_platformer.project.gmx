@@ -28,8 +28,10 @@
         <sprite>sprites\spr_noino_split1</sprite>
         <sprite>sprites\spr_noino_split2</sprite>
         <sprite>sprites\spr_noino_bounce</sprite>
-        <sprite>sprites\spr_noino_air_up</sprite>
-        <sprite>sprites\spr_noino_air_down</sprite>
+        <sprite>sprites\spr_noino_air_up1</sprite>
+        <sprite>sprites\spr_noino_air_up2</sprite>
+        <sprite>sprites\spr_noino_air_down1</sprite>
+        <sprite>sprites\spr_noino_air_down2</sprite>
         <sprite>sprites\spr_noino_collision</sprite>
       </sprites>
       <sprites name="Frog">
