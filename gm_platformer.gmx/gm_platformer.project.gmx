@@ -11,6 +11,7 @@
       <sound>sound\snd_player_sword</sound>
       <sound>sound\snd_player_flutter</sound>
       <sound>sound\snd_player_charge</sound>
+      <sound>sound\snd_player_charged</sound>
       <sound>sound\snd_player_shoot</sound>
     </sounds>
   </sounds>
@@ -76,6 +77,7 @@
       <object>objects\obj_player_swordbox</object>
       <object>objects\_obj_player_painbox</object>
       <object>objects\obj_wandererswave</object>
+      <object>objects\obj_wanderertrail</object>
     </objects>
     <objects name="Enemies">
       <objects name="Noino">

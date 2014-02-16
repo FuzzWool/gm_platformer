@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//The amount "batched on" to a proportional movement.
+            <string>_collision = true
+
+//The amount "batched on" to a proportional movement.
 move_x = 0
 move_y = 0
 

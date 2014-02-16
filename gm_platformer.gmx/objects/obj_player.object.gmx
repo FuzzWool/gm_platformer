@@ -164,6 +164,10 @@ if swordbox != false
             <string>//PHYSICS
 slow_x = 0.25
 move_y += 0.25
+
+//cap
+if _charged{cap_x = 1}
+else{cap_x = 2.5}
 //reset on floor
 if place_meeting(x,y+1,obj_solid)
 {move_y = 0;}
@@ -223,7 +227,11 @@ if not _in_pain
     if keyboard_check(ord('X')) and not _slashing and _charging == 0
     {_charging = 1; sound_abs(snd_player_charge);}
     //finish
-    if _charging &gt;= 45{_charged = true; audio_stop_sound(snd_player_charge)}
+    if _charging == 45
+    {
+        _charged = true;
+        sound_abs(snd_player_charged); audio_stop_sound(snd_player_charge)
+    }
     //stop
     if not keyboard_check(ord('X'))
     {
@@ -231,10 +239,9 @@ if not _in_pain
         if _charged
         {
             sound_abs(snd_player_shoot)
-            if _facing_right==true {__x = x + 35}
-            if _facing_right==false{__x = x - 35}
-            __y = y + 5
-            __ww = instance_create(__x,__y, obj_wandererswave);
+            if _facing_right==true {__x = x + 35+00}
+            if _facing_right==false{__x = x - 35+16}
+            __ww = instance_create(__x,y+5, obj_wandererswave);
             if _facing_right{__ww.facing_right = true;}
             _slashing = true;
         }
@@ -328,7 +335,7 @@ _was_in_pain = _in_pain
             <string>//direction, origin
 if _facing_right == true {_flip = 1}
 if _facing_right == false {_flip = -1}
-_x = x+5; _y = y+14
+_x = x+8; _y = y+14
 
 
 //HITBOX
