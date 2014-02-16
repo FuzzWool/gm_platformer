@@ -32,9 +32,11 @@ depth = -8
 //controls/major states
 _slashing = false
 _hovering = false
+_charged = false; _charging = 0
 _facing_right = false
 _on_ground = false
 _was_on_ground = _on_ground
+
 //pain
 _pain = 0
 _painbox = instance_create(x,y,_obj_player_painbox)
@@ -161,9 +163,7 @@ if swordbox != false
             <kind>1</kind>
             <string>//PHYSICS
 slow_x = 0.25
-
-if _hovering == false {move_y += 0.25}
-if _hovering == true  {move_y += 0.25}
+move_y += 0.25
 //reset on floor
 if place_meeting(x,y+1,obj_solid)
 {move_y = 0;}
@@ -177,22 +177,13 @@ and move_y &lt; 0
 //ground
 _on_ground = false
 if place_meeting(x,y+1,obj_solid){_on_ground = true}
-
 //just hit ground
 if _on_ground and not _was_on_ground{sound_abs(snd_player_land);}
 _was_on_ground = _on_ground
-
-//direction
-/*if not _slashing
-{
-    if move_x &gt; 0 {_facing_right = true}
-    if move_x &lt; 0 {_facing_right = false}
-}*/
 //slashing
-if _frame &gt;= sprite_get_number(_sprite)-1 {_slashing = false;}
+if _frame &gt;= 4 and _sprite == moth_slash{_slashing = false;}
 //hover
 if _on_ground{_hovering = false}
-
 
 
 //CONTROLS
@@ -209,7 +200,8 @@ if not _in_pain
         move_x += 1
         if not _slashing{_facing_right = true}
     }
-    //jump
+    
+    //jump/hovering
     if keyboard_check_pressed(ord('Z'))
     {
         if not _on_ground and not _hovering
@@ -221,9 +213,35 @@ if not _in_pain
     {
         if move_y &lt;= 0 {move_y += 1.5;}
     }
+    
     //slash
-    if keyboard_check_pressed(ord('X')) and not _slashing
+    if keyboard_check_pressed(ord('X')) and _sprite != moth_slash
     {_slashing = true; sound_abs(snd_player_sword);}
+    
+    //wanderer's wave
+    //start
+    if keyboard_check(ord('X')) and not _slashing and _charging == 0
+    {_charging = 1; sound_abs(snd_player_charge);}
+    //finish
+    if _charging &gt;= 45{_charged = true; audio_stop_sound(snd_player_charge)}
+    //stop
+    if not keyboard_check(ord('X'))
+    {
+        //release the wave!
+        if _charged
+        {
+            sound_abs(snd_player_shoot)
+            if _facing_right==true {__x = x + 35}
+            if _facing_right==false{__x = x - 35}
+            __y = y + 5
+            __ww = instance_create(__x,__y, obj_wandererswave);
+            if _facing_right{__ww.facing_right = true;}
+            _slashing = true;
+        }
+        _charging=0; _charged = false; audio_stop_sound(snd_player_charge)
+    }
+    //loop
+    if _charging != 0{_charging += 1}
 }
 </string>
           </argument>
@@ -326,6 +344,7 @@ if _hovering
 }
 
 //MOTH
+//sprite
 _sprite=moth_idle; _animspeed = 0.1
 if move_x != 0 and _on_ground{_sprite=moth_walk; _animspeed=0.3}
 if not _on_ground
@@ -336,6 +355,11 @@ if not _on_ground
 if _slashing{_sprite=moth_slash; _animspeed = 0.4}
 if _in_pain{_sprite=moth_pain;}
 
+//color
+__color = make_color_rgb(255,255,255)
+if _charged or (_charging &gt; 0 and _charging mod 3 == 0)
+{__color = make_color_rgb(255,75,255)}
+
 //(reset frame)
 if _sprite != __old_sprite {_frame = 0;}
 __old_sprite = _sprite
@@ -343,8 +367,7 @@ __old_sprite = _sprite
 //draw
 _frame += _animspeed
 _frame = _frame mod sprite_get_number(_sprite)
-draw_sprite_ext
-(_sprite, _frame, _x,_y, _flip,1, 0, c_white, 255 );
+draw_sprite_ext(_sprite, _frame, _x,_y, _flip,1, 0, __color, 255 );
 
 
 //with _painbox{draw_me()}

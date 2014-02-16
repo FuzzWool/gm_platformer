@@ -10,6 +10,8 @@
       <sound>sound\snd_player_land</sound>
       <sound>sound\snd_player_sword</sound>
       <sound>sound\snd_player_flutter</sound>
+      <sound>sound\snd_player_charge</sound>
+      <sound>sound\snd_player_shoot</sound>
     </sounds>
   </sounds>
   <sprites name="sprites">
@@ -26,6 +28,10 @@
         <sprite>sprites\moth_jump_hover</sprite>
         <sprite>sprites\moth_painbox</sprite>
         <sprite>sprites\moth_pain</sprite>
+      </sprites>
+      <sprites name="Effects">
+        <sprite>sprites\spr_wandererswave</sprite>
+        <sprite>sprites\spr_wandererbox</sprite>
       </sprites>
     </sprites>
     <sprites name="Enemies">
@@ -69,6 +75,7 @@
       <object>objects\obj_player</object>
       <object>objects\obj_player_swordbox</object>
       <object>objects\_obj_player_painbox</object>
+      <object>objects\obj_wandererswave</object>
     </objects>
     <objects name="Enemies">
       <objects name="Noino">
