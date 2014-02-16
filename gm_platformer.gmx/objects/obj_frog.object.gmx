@@ -33,7 +33,7 @@ depth = -1
 image_speed = 0.2;
 
 //attack/pain
-hp = 999
+hp = 8
 painbox = sprite_index
 attackbox = sprite_index
 
@@ -45,6 +45,8 @@ _croak_timer = 0
 _made_noino = false
 //
 
+//draw
+_hit = 0
 _facing_right = false
 </string>
           </argument>
@@ -79,6 +81,7 @@ if sprite_index != spr_frog_croak
 }
 
 //OVERALL HEALTH
+if pain &gt; 0{_hit = true}//for draw
 hp -= pain; pain = 0
 if hp &lt;= 0 {hp = 0}
 
