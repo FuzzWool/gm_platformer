@@ -34,6 +34,7 @@ _slashing = false
 _hovering = false
 _facing_right = false
 _on_ground = false
+_was_on_ground = _on_ground
 //pain
 _pain = 0
 _painbox = instance_create(x,y,_obj_player_painbox)
@@ -176,6 +177,11 @@ and move_y &lt; 0
 //ground
 _on_ground = false
 if place_meeting(x,y+1,obj_solid){_on_ground = true}
+
+//just hit ground
+if _on_ground and not _was_on_ground{sound_abs(snd_player_land);}
+_was_on_ground = _on_ground
+
 //direction
 /*if not _slashing
 {
@@ -206,8 +212,9 @@ if not _in_pain
     //jump
     if keyboard_check_pressed(ord('Z'))
     {
-        if not _on_ground and not _hovering{move_y = -3; _hovering = true}
-        if _on_ground{move_y = -4.5;}
+        if not _on_ground and not _hovering
+        {move_y = -3; _hovering = true; sound_abs(snd_player_flutter);}
+        if _on_ground{move_y = -4.5; sound_abs(snd_player_jump);}
     }
     //jump height
     if keyboard_check_released(ord('Z')) and not _hovering
@@ -215,7 +222,8 @@ if not _in_pain
         if move_y &lt;= 0 {move_y += 1.5;}
     }
     //slash
-    if keyboard_check_pressed(ord('X')){_slashing = true}
+    if keyboard_check_pressed(ord('X')) and not _slashing
+    {_slashing = true; sound_abs(snd_player_sword);}
 }
 </string>
           </argument>

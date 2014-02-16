@@ -24,6 +24,7 @@ Features:
 + Noino
 ! Frog
 	! limit Noino spawning
+	! damage overlay
 =========================================================================
 
 ! Moth
