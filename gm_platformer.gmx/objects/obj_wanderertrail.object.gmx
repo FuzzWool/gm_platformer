@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>event_inherited()
 _collision = false
-image_speed = 0.3
+image_speed = choose(0.3,0.4,0.5)
 </string>
           </argument>
         </arguments>

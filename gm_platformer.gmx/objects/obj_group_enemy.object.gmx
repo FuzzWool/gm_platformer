@@ -35,6 +35,7 @@ hp = 5
 pain = 0
 painbox = false
 attackbox = false
+hitby_wave = true
 
 //////////////////////////////
 //PRIVATE

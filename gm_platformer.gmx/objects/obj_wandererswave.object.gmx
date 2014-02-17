@@ -31,7 +31,7 @@ depth=-10
 //PHYSICS
 //The amount "batched on" to a proportional movement.
 _collision = false
-__a = -6
+__a = -5
 move_x = __a
 cap_x = abs(__a)
 slow_x = 0
@@ -83,7 +83,7 @@ if image_index &gt;= 0 and _made_trail == false
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="0">
+    <event eventtype="7" enumb="40">
       <action>
         <libid>1</libid>
         <id>203</id>
