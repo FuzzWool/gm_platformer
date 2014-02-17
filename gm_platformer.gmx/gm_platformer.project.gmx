@@ -54,6 +54,14 @@
         <sprite>sprites\spr_frog_die</sprite>
         <sprite>sprites\spr_frog_croak</sprite>
       </sprites>
+      <sprites name="Dedant">
+        <sprite>sprites\spr_dedant_snooze</sprite>
+        <sprite>sprites\spr_dedant_pain</sprite>
+        <sprite>sprites\spr_dedant_run</sprite>
+        <sprite>sprites\spr_dedant_skid</sprite>
+        <sprite>sprites\spr_dedant_ragerun</sprite>
+        <sprite>sprites\spr_dedant_rageskid</sprite>
+      </sprites>
     </sprites>
     <sprites name="Boxes">
       <sprite>sprites\spr_1x1</sprite>
@@ -87,6 +95,9 @@
       </objects>
       <objects name="Frog">
         <object>objects\obj_frog</object>
+      </objects>
+      <objects name="Dedant">
+        <object>objects\obj_dedant</object>
       </objects>
       <object>objects\obj_group_enemy</object>
     </objects>
