@@ -61,6 +61,7 @@
         <sprite>sprites\spr_dedant_skid</sprite>
         <sprite>sprites\spr_dedant_ragerun</sprite>
         <sprite>sprites\spr_dedant_rageskid</sprite>
+        <sprite>sprites\spr_dedant_collision</sprite>
       </sprites>
     </sprites>
     <sprites name="Boxes">
