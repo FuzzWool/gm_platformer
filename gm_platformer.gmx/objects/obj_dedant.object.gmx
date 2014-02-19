@@ -27,11 +27,123 @@
             <kind>1</kind>
             <string>event_inherited()
 
+//PHYSICS
+_collision = true
+
+//The amount "batched on" to a proportional movement.
+move_x = 0
+move_y = 0
+
+//The absolute limits of a movement. May never exceed.
+cap_x = 4
+cap_y = 7.5
+
+//The amount the move values go towards 'normalizing' each loop.
+slow_x = 0.1
+slow_y = 0
+
 //
 
-image_speed = 0.15
+_facing_right = false
+
+//PAIN/ATTACK
 painbox = self
 attackbox = self
+
+//DRAW
+_sprite = spr_moth_idle
+_frame = 0
+_animspeed = 0.3
+__old_sprite = _sprite
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//STATES
+
+if keyboard_check(vk_left)
+{
+    _facing_right = false
+    if move_x &gt; 0{move_x -= 0.1}
+    else{move_x -= 0.2}
+}
+if keyboard_check(vk_right)
+{
+    _facing_right = true
+    if move_x &lt; 0{move_x += 0.1}
+    else{move_x += 0.2}
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//direction, origin
+if _facing_right == true {_flip = -1}
+if _facing_right == false {_flip = 1}
+_x = x+1; _y = y
+
+//HITBOX
+//draw_me()
+
+//DEDANT
+//sprite
+draw_text(100,100, string(move_x))
+_sprite=spr_dedant_idle; _animspeed = 0.5
+if move_x != 0{_sprite=spr_dedant_run}
+if (not _facing_right and move_x &gt; 0) or (_facing_right and move_x &lt; 0)
+{
+    _sprite = spr_dedant_skid
+    if _facing_right{_flip = 1}
+    else{_flip = -1}
+}
+
+//color
+__color = make_color_rgb(255,255,255)
+
+//(reset frame)
+if _sprite != __old_sprite {_frame = 0;}
+__old_sprite = _sprite
+
+//draw
+_frame += _animspeed
+_frame = _frame mod sprite_get_number(_sprite)
+draw_sprite_ext(_sprite, _frame, _x,_y, _flip,1, 0, __color, 255 );
 </string>
           </argument>
         </arguments>

@@ -57,6 +57,7 @@
       <sprites name="Dedant">
         <sprite>sprites\spr_dedant_snooze</sprite>
         <sprite>sprites\spr_dedant_pain</sprite>
+        <sprite>sprites\spr_dedant_idle</sprite>
         <sprite>sprites\spr_dedant_run</sprite>
         <sprite>sprites\spr_dedant_skid</sprite>
         <sprite>sprites\spr_dedant_ragerun</sprite>

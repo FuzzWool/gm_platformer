@@ -19,11 +19,6 @@
   <width>50</width>
   <height>50</height>
   <frames>
-    <frame index="0">images\spr_dedant_pain_0.png</frame>
-    <frame index="1">images\spr_dedant_pain_1.png</frame>
-    <frame index="2">images\spr_dedant_pain_2.png</frame>
-    <frame index="3">images\spr_dedant_pain_3.png</frame>
-    <frame index="4">images\spr_dedant_pain_4.png</frame>
-    <frame index="5">images\spr_dedant_pain_5.png</frame>
+    <frame index="0">images\spr_dedant_idle_0.png</frame>
   </frames>
 </sprite>
