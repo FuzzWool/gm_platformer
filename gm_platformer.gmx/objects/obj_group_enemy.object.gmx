@@ -38,6 +38,9 @@ attackbox = false
 hitby_wave = true
 _hit = false
 
+//player tracking
+playeris_right = false
+
 //////////////////////////////
 //PRIVATE
 </string>

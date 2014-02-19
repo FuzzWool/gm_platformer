@@ -47,6 +47,7 @@ slow_y = 0
 _facing_right = false
 
 //PAIN/ATTACK
+hp = 9999
 painbox = self
 attackbox = self
 
@@ -55,6 +56,36 @@ _sprite = spr_moth_idle
 _frame = 0
 _animspeed = 0.3
 __old_sprite = _sprite
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//HEALTH
+//loss
+//OVERALL HEALTH
+if pain &gt; 0{_hit = true}//for draw
+hp -= pain; pain = 0
+if hp &lt;= 0 {hp = 0}
+//die
+if hp==0{instance_destroy()}
 </string>
           </argument>
         </arguments>
@@ -79,17 +110,29 @@ __old_sprite = _sprite
             <kind>1</kind>
             <string>//STATES
 
-if keyboard_check(vk_left)
+//move towards player
+if _sprite != spr_dedant_pain
 {
-    _facing_right = false
-    if move_x &gt; 0{move_x -= 0.1}
-    else{move_x -= 0.2}
+    if not playeris_right
+    {
+        _facing_right = false
+        if move_x &gt; 0{move_x -= 0.1}
+        else{move_x -= 0.2}
+    }
+    else
+    {
+        _facing_right = true
+        if move_x &lt; 0{move_x += 0.1}
+        else{move_x += 0.2}
+    }
 }
-if keyboard_check(vk_right)
+
+//knockback
+if _hit
 {
-    _facing_right = true
-    if move_x &lt; 0{move_x += 0.1}
-    else{move_x += 0.2}
+    __a = 2.5
+    if playeris_right{move_x = -__a}
+    else{move_x = +__a}
 }
 </string>
           </argument>
@@ -123,18 +166,25 @@ _x = x+1; _y = y
 
 //DEDANT
 //sprite
-draw_text(100,100, string(move_x))
-_sprite=spr_dedant_idle; _animspeed = 0.5
-if move_x != 0{_sprite=spr_dedant_run}
-if (not _facing_right and move_x &gt; 0) or (_facing_right and move_x &lt; 0)
+if not (_sprite == spr_dedant_pain and _frame &lt; 14)
 {
-    _sprite = spr_dedant_skid
-    if _facing_right{_flip = 1}
-    else{_flip = -1}
+    _sprite=spr_dedant_idle; _animspeed = 0.5
+    if move_x != 0{_sprite=spr_dedant_run}
+    if (not _facing_right and move_x &gt; 0) or (_facing_right and move_x &lt; 0)
+    {
+        _sprite = spr_dedant_skid
+        if _facing_right{_flip = 1}
+        else{_flip = -1}
+    }
 }
+if _hit{_sprite=spr_dedant_pain; _animspeed=0.5;}
 
 //color
-__color = make_color_rgb(255,255,255)
+if _hit == false
+{__color = make_color_rgb(255,255,255)}
+//Start - red
+if _hit == true
+{__color = make_color_rgb(255,0,0)}
 
 //(reset frame)
 if _sprite != __old_sprite {_frame = 0;}

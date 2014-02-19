@@ -111,8 +111,16 @@ if swordbox != false
 }
 
 //ATTACK ENEMIES
-//sword
+
+//reset
+with obj_group_enemy
+{
+    hitfrom_behind = false
+    _hit = false
+}
 if room_speed != 60{room_speed = 60;}
+
+//sword
 if swordbox != false
 {
     with obj_group_enemy
@@ -152,6 +160,16 @@ with obj_group_enemy
         else if not place_meeting(x,y,obj_wandererswave)
         {hitby_wave = false}
     }
+}
+
+
+//LOCATION
+with obj_group_enemy
+{
+    if ins_Player.x + (ins_Player.sprite_width/2) &gt; x + (sprite_width/2)
+    {playeris_right = true}
+    else
+    {playeris_right = false}
 }
 </string>
           </argument>
