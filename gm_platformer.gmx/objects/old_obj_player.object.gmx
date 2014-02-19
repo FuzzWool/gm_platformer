@@ -56,7 +56,7 @@ _frame = 0
 _animspeed = 0.3
 __old_sprite = _sprite
 
-_hover_sprite = spr_moth_jump_hover
+_hover_sprite = moth_jump_hover
 _hover_frame = 0
 _hover_animspeed = 0.5
 </string>
@@ -104,10 +104,10 @@ and __can_create_swordbox
 //Use
 if swordbox != false
 {
-    if _facing_right{swordbox.image_xscale = +1}
-    if not _facing_right{swordbox.image_xscale = -1}
-    swordbox.x=x+1
-    swordbox.y=y-18
+    if _facing_right{_x = x}
+    if not _facing_right{_x = x + sprite_width}
+    swordbox.x=_x
+    swordbox.y=y
 }
 
 //ATTACK ENEMIES
@@ -153,67 +153,6 @@ with obj_group_enemy
         {hitby_wave = false}
     }
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>//PAIN
-
-//Position painbox.
-_painbox.x = x-4; _painbox.y = y-16
-
-//Grab damage from enemies.
-with obj_group_enemy
-{
-    if attackbox != false
-    {
-        if place_meeting(x,y,ins_Player._painbox)
-        {
-            if ins_Player._in_pain == false
-            {
-                //move
-                c1 = ins_Player.x+(ins_Player.sprite_width/2)
-                c2 = x+(sprite_width/2)
-                if c1 &gt;= c2{ins_Player.move_x = +5;_facing_right=false}
-                else       {ins_Player.move_x = -5;_facing_right=true}
-                ins_Player.move_y = -4.5
-                //disable states
-                ins_Player._hovering = false
-                ins_Player._slashing = false
-                //pain
-                ins_Player._in_pain = true
-            }
-        }
-    }
-}
-if _in_pain
-{ins_Player.slow_x = 0.1}
-
-//STATE - wince in pain.
-//Start
-if not _was_in_pain and _in_pain{_pain_time = 0}
-//Progress
-if _in_pain{_pain_time += 1}
-//Stop
-if _pain_time/60 &gt; _pain_time_end{_in_pain = false}
-//
-_was_in_pain = _in_pain
 </string>
           </argument>
         </arguments>
@@ -314,9 +253,9 @@ if not _in_pain
         if _charged
         {
             sound_abs(snd_player_shoot)
-            if _facing_right==true {__x = x + 35-8}
-            if _facing_right==false{__x = x - 35+8}
-            __ww = instance_create(__x,y-9, obj_wandererswave);
+            if _facing_right==true {__x = x + 35+00}
+            if _facing_right==false{__x = x - 35+16}
+            __ww = instance_create(__x,y+5, obj_wandererswave);
             if _facing_right{__ww.facing_right = true;}
             _slashing = true;
         }
@@ -325,6 +264,67 @@ if not _in_pain
     //loop
     if _charging != 0{_charging += 1}
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//PAIN
+
+//Position painbox.
+_painbox.x = x; _painbox.y = y
+
+//Grab damage from enemies.
+with obj_group_enemy
+{
+    if attackbox != false
+    {
+        if place_meeting(x,y,ins_Player._painbox)
+        {
+            if ins_Player._in_pain == false
+            {
+                //move
+                c1 = ins_Player.x+(ins_Player.sprite_width/2)
+                c2 = x+(sprite_width/2)
+                if c1 &gt;= c2{ins_Player.move_x = +5;_facing_right=false}
+                else       {ins_Player.move_x = -5;_facing_right=true}
+                ins_Player.move_y = -4.5
+                //disable states
+                ins_Player._hovering = false
+                ins_Player._slashing = false
+                //pain
+                ins_Player._in_pain = true
+            }
+        }
+    }
+}
+if _in_pain
+{ins_Player.slow_x = 0.1}
+
+//STATE - wince in pain.
+//Start
+if not _was_in_pain and _in_pain{_pain_time = 0}
+//Progress
+if _in_pain{_pain_time += 1}
+//Stop
+if _pain_time/60 &gt; _pain_time_end{_in_pain = false}
+//
+_was_in_pain = _in_pain
 </string>
           </argument>
         </arguments>
@@ -350,7 +350,7 @@ if not _in_pain
             <string>//direction, origin
 if _facing_right == true {_flip = 1}
 if _facing_right == false {_flip = -1}
-_x = x+1; _y = y
+_x = x+8; _y = y+14
 
 
 //HITBOX

@@ -37,6 +37,9 @@ hp = 8
 painbox = sprite_index
 attackbox = sprite_index
 
+//noino cap
+noinos = 0
+
 //////////////////////
 //PRIVATE
 
@@ -127,13 +130,18 @@ if sprite_index != spr_frog_pain and sprite_index != spr_frog_die
     {sprite_index = spr_frog_idle; image_index = 0}
     
     //croak
-    if (_croak_timer/60) &gt;= 0.75
+    if (_croak_timer/60) &gt;= 0.75 and noinos &lt; 4
     {sprite_index = spr_frog_croak; image_index = 0;}
     //make noino
     if sprite_index == spr_frog_croak and image_index &gt;= 2
     and _made_noino == false
     {
+        //birth
         __n = instance_create(x-3,y-10,obj_noino)
+        __n.frogbirth=true
+        noinos+=1
+        __n.myfrog=id
+        
         //distance to spew = distance from moth
         if distance_to_point(ins_Player.x, ins_Player.y) &gt; 50
         {__n.move_x = -2.0; __n.move_y = -5}

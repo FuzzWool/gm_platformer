@@ -32,20 +32,21 @@ depth = -3
 //PUBLIC
 
 //physics
-
-//The absolute limits of a movement. May never exceed.
 cap_x = 2.5
 cap_y = 7.5
-
-//The amount the move values go towards 'normalizing' each loop.
 slow_x = 0
 slow_y = 0
 
-
-//
+//hp
 hp = 1
-_facing_right = true
 
+//PAIN/ATTACK
+painbox = sprite_index
+attackbox = sprite_index
+
+//frog capping
+frogbirth = false
+myfrog = 0
 
 //////////////////////
 //PRIVATE
@@ -56,9 +57,8 @@ _frame = 0
 _animspeed = 0.3
 __old_sprite = _sprite
 
-//PAIN/ATTACK
-painbox = sprite_index
-attackbox = sprite_index
+//direction
+_facing_right = true
 </string>
           </argument>
         </arguments>
@@ -103,6 +103,10 @@ if hp==0
     else{_split1.move_x = +abs(__x)}
     _split1.slow_x = 0.005
     //
+    if frogbirth
+    {
+        if instance_exists(myfrog){myfrog.noinos-=1;}
+    }
     instance_destroy()
 }
 </string>

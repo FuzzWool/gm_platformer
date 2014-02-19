@@ -19,16 +19,16 @@
     <sprite>sprites\black_box</sprite>
     <sprites name="Players">
       <sprites name="Moth">
-        <sprite>sprites\moth_idle</sprite>
-        <sprite>sprites\moth_walk</sprite>
-        <sprite>sprites\moth_collision</sprite>
-        <sprite>sprites\moth_slash</sprite>
-        <sprite>sprites\moth_slash_box</sprite>
-        <sprite>sprites\moth_jump_up</sprite>
-        <sprite>sprites\moth_jump_down</sprite>
-        <sprite>sprites\moth_jump_hover</sprite>
-        <sprite>sprites\moth_painbox</sprite>
-        <sprite>sprites\moth_pain</sprite>
+        <sprite>sprites\spr_moth_idle</sprite>
+        <sprite>sprites\spr_moth_walk</sprite>
+        <sprite>sprites\spr_moth_slash</sprite>
+        <sprite>sprites\spr_moth_jump_up</sprite>
+        <sprite>sprites\spr_moth_jump_down</sprite>
+        <sprite>sprites\spr_moth_jump_hover</sprite>
+        <sprite>sprites\spr_moth_pain</sprite>
+        <sprite>sprites\spr_moth_collision</sprite>
+        <sprite>sprites\spr_moth_painbox</sprite>
+        <sprite>sprites\spr_moth_slash_box</sprite>
       </sprites>
       <sprites name="Effects">
         <sprite>sprites\spr_wandererswave</sprite>
@@ -84,7 +84,7 @@
     <objects name="Player">
       <object>objects\obj_player</object>
       <object>objects\obj_player_swordbox</object>
-      <object>objects\_obj_player_painbox</object>
+      <object>objects\obj_player_painbox</object>
       <object>objects\obj_wandererswave</object>
       <object>objects\obj_wanderertrail</object>
     </objects>
