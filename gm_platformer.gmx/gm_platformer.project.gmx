@@ -13,6 +13,7 @@
       <sound>sound\snd_player_charge</sound>
       <sound>sound\snd_player_charged</sound>
       <sound>sound\snd_player_shoot</sound>
+      <sound>sound\snd_player_hurt</sound>
     </sounds>
   </sounds>
   <sprites name="sprites">
