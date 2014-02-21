@@ -30,6 +30,7 @@ track_player = false
 hp_bars = 0
 
 _init = false
+_animated_hp = 0
 </string>
           </argument>
         </arguments>
@@ -60,6 +61,9 @@ if _init == false
 {
     __i = 0; while __i &lt; track_player.hp
     {
+        //animated hp reset
+        _animated_hp = track_player.hp
+        //create hp bars
         __hp = instance_create(18+(4*__i),2, obj_hp);
         __hp.image_index = 11
         hp_bars[__i] = __hp
@@ -69,29 +73,20 @@ if _init == false
 }
 
 //LOOP bump the HP bars to match the Player's current HP.
+//Animate
+if track_player.hp &gt; _animated_hp{_animated_hp += (1/11);}
+if track_player.hp &lt; _animated_hp{_animated_hp -= (1/11);}
+__using_hp = _animated_hp
 
-//immediate
-/*
+//__using_hp = track_player.hp //(don't animate)
 __i = 0; __end = array_length_1d(hp_bars)
 while __i &lt; __end
 {
-    if __i &lt; track_player.hp
+    if __i &lt; floor(__using_hp) //full hp
     {hp_bars[__i].image_index = 11}
-    else
-    {hp_bars[__i].image_index = 0}
-    __i += 1
-}*/
-
-
-//immediate
-__i = 0; __end = array_length_1d(hp_bars)
-while __i &lt; __end
-{
-    if __i &lt; floor(track_player.hp) //full hp
-    {hp_bars[__i].image_index = 11}
-    else if __i == floor(track_player.hp) //some hp
+    else if __i == floor(__using_hp) //some hp
     {
-        __hp = track_player.hp; while __hp &gt; 1{__hp -= 1}
+        __hp = __using_hp; while __hp &gt;= 1{__hp -= 1}
         hp_bars[__i].image_index = __hp*11
     }
     else //no hp
