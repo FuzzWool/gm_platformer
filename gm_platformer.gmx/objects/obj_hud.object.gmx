@@ -116,9 +116,21 @@ if _init == false
 }
 
 //LOOP
+__score = string(score)
+while string_length(__score) &lt; 8{__score = "0"+__score;}
+__numbered = false
 __i = 8
 while __i &gt; 0
 {
+    //greyed 0
+    if string_char_at(__score, 9-__i) != "0"
+    {__numbered = true}
+    
+    if not __numbered
+    {_score_numbers[8-__i].image_index = 10}
+    //score number
+    else
+    {_score_numbers[8-__i].image_index = real(string_char_at(__score, 9-__i))}
     __i-=1;
 }
 
