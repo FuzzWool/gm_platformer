@@ -69,12 +69,32 @@ if _init == false
 }
 
 //LOOP bump the HP bars to match the Player's current HP.
+
+//immediate
+/*
 __i = 0; __end = array_length_1d(hp_bars)
 while __i &lt; __end
 {
     if __i &lt; track_player.hp
     {hp_bars[__i].image_index = 11}
     else
+    {hp_bars[__i].image_index = 0}
+    __i += 1
+}*/
+
+
+//immediate
+__i = 0; __end = array_length_1d(hp_bars)
+while __i &lt; __end
+{
+    if __i &lt; floor(track_player.hp) //full hp
+    {hp_bars[__i].image_index = 11}
+    else if __i == floor(track_player.hp) //some hp
+    {
+        __hp = track_player.hp; while __hp &gt; 1{__hp -= 1}
+        hp_bars[__i].image_index = __hp*11
+    }
+    else //no hp
     {hp_bars[__i].image_index = 0}
     __i += 1
 }

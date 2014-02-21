@@ -41,7 +41,7 @@ _on_ground = false
 _was_on_ground = _on_ground
 
 //pain
-hp = 10
+hp = 8
 _pain = 0
 _painbox = instance_create(x,y,obj_player_painbox)
 _in_pain = false
@@ -199,9 +199,9 @@ with obj_group_enemy
           <argument>
             <kind>1</kind>
             <string>if keyboard_check_pressed(ord('A')) and _sprite != spr_moth_slash
-{hp -= 1; sound_abs(snd_player_hurt);}
+{hp -= 1 + (1/11); sound_abs(snd_player_hurt);}
 if keyboard_check_pressed(ord('S')) and _sprite != spr_moth_slash
-{hp += 1; sound_abs(snd_player_sword);}
+{hp += 1 + (1/11); sound_abs(snd_player_sword);}
 
 
 
@@ -393,7 +393,9 @@ _was_in_pain = _in_pain
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//direction, origin
+            <string>draw_text(100,100,hp)
+
+//direction, origin
 if _facing_right == true {_flip = 1}
 if _facing_right == false {_flip = -1}
 _x = x+1; _y = y
