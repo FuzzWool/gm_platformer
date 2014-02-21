@@ -3,7 +3,7 @@
   <spriteName>spr_moth_collision</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-8</depth>
   <persistent>0</persistent>
   <parentName>obj_physics</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -26,7 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited()
-depth = -8
+
+//HUD
+_hud = instance_create(0,0,obj_hud)
+_hud.track_player = id
 
 //BEGIN STEP
 //controls/major states
@@ -38,6 +41,7 @@ _on_ground = false
 _was_on_ground = _on_ground
 
 //pain
+hp = 10
 _pain = 0
 _painbox = instance_create(x,y,obj_player_painbox)
 _in_pain = false
@@ -194,7 +198,14 @@ with obj_group_enemy
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//RESET
+            <string>if keyboard_check_pressed(ord('A')) and _sprite != spr_moth_slash
+{hp -= 1; sound_abs(snd_player_hurt);}
+if keyboard_check_pressed(ord('S')) and _sprite != spr_moth_slash
+{hp += 1; sound_abs(snd_player_sword);}
+
+
+
+//RESET
 if room_speed != 60{room_speed = 60;}
 
 //PHYSICS
@@ -320,6 +331,7 @@ with obj_group_enemy
         {
             if ins_Player.invincible == -1
             {
+                ins_Player.hp -= damage
                 //move
                 c1 = ins_Player.x+(ins_Player.sprite_width/2)
                 c2 = x+(sprite_width/2)

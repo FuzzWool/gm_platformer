@@ -73,6 +73,10 @@
     <sprites name="SFX">
       <sprite>sprites\spr_slash</sprite>
     </sprites>
+    <sprites name="HUD">
+      <sprite>sprites\spr_hud</sprite>
+      <sprite>sprites\spr_hp</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -89,6 +93,10 @@
       <object>objects\obj_player_painbox</object>
       <object>objects\obj_wandererswave</object>
       <object>objects\obj_wanderertrail</object>
+      <objects name="HUD">
+        <object>objects\obj_hud</object>
+        <object>objects\obj_hp</object>
+      </objects>
     </objects>
     <objects name="Enemies">
       <objects name="Noino">
