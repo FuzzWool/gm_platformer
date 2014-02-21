@@ -28,6 +28,7 @@
             <string>event_inherited()
 
 //HUD
+score = 0
 _hud = instance_create(0,0,obj_hud)
 _hud.track_player = id
 
@@ -198,7 +199,13 @@ with obj_group_enemy
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//RESET
+            <string>//jump/hovering
+if keyboard_check_pressed(ord('A'))
+{
+    score += 100;
+}
+
+//RESET
 if room_speed != 60{room_speed = 60;}
 
 //PHYSICS
@@ -386,7 +393,9 @@ _was_in_pain = _in_pain
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//direction, origin
+            <string>draw_text(100,100, string(100))
+
+//direction, origin
 if _facing_right == true {_flip = 1}
 if _facing_right == false {_flip = -1}
 _x = x+1; _y = y

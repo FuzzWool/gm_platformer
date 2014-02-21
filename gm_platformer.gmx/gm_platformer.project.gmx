@@ -76,6 +76,7 @@
     <sprites name="HUD">
       <sprite>sprites\spr_hud</sprite>
       <sprite>sprites\spr_hp</sprite>
+      <sprite>sprites\spr_score</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background"/>
@@ -96,6 +97,7 @@
       <objects name="HUD">
         <object>objects\obj_hud</object>
         <object>objects\obj_hp</object>
+        <object>objects\obj_score</object>
       </objects>
     </objects>
     <objects name="Enemies">

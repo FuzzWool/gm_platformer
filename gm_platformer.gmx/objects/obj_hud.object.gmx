@@ -25,12 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//HP BARS
-track_player = false
-hp_bars = 0
+            <string>_init = false
 
-_init = false
+//HP BARS
+track_player = false
+_hp_bars = 0
 _animated_hp = 0
+
+//SCORE
+_score_numbers = 0
 </string>
           </argument>
         </arguments>
@@ -53,8 +56,8 @@ _animated_hp = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Track HP.
-//track_player, hp_bars
+            <string>//HP
+//track_player, _hp_bars
 
 //INIT player HP.
 if _init == false
@@ -66,10 +69,9 @@ if _init == false
         //create hp bars
         __hp = instance_create(18+(4*__i),2, obj_hp);
         __hp.image_index = 11
-        hp_bars[__i] = __hp
+        _hp_bars[__i] = __hp
         __i+=1;
     }
-    _init = true
 }
 
 //LOOP bump the HP bars to match the Player's current HP.
@@ -79,20 +81,49 @@ if track_player.hp &lt; _animated_hp{_animated_hp -= (1/11);}
 __using_hp = _animated_hp
 
 //__using_hp = track_player.hp //(don't animate)
-__i = 0; __end = array_length_1d(hp_bars)
+__i = 0; __end = array_length_1d(_hp_bars)
 while __i &lt; __end
 {
     if __i &lt; floor(__using_hp) //full hp
-    {hp_bars[__i].image_index = 11}
+    {_hp_bars[__i].image_index = 11}
     else if __i == floor(__using_hp) //some hp
     {
         __hp = __using_hp; while __hp &gt;= 1{__hp -= 1}
-        hp_bars[__i].image_index = __hp*11
+        _hp_bars[__i].image_index = __hp*11
     }
     else //no hp
-    {hp_bars[__i].image_index = 0}
+    {_hp_bars[__i].image_index = 0}
     __i += 1
 }
+
+
+//
+
+//SCORE
+//_score_numbers
+
+//INIT
+if _init == false
+{
+    __i = 0
+    while __i &lt; 8
+    {
+        __score = instance_create(130+(__i*6),8, obj_score)
+        __score.image_index = 10
+        _score_numbers[__i] = __score
+        __i+=1;
+    }
+}
+
+//LOOP
+__i = 8
+while __i &gt; 0
+{
+    __i-=1;
+}
+
+
+_init = true
 </string>
           </argument>
         </arguments>
