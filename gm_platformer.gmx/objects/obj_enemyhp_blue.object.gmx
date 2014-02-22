@@ -25,10 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>color = c_red
-percent = 50
+            <string>self.percent = 100
+
 _w = 70
 _h = 12
+draw_set_color(c_blue);
 </string>
           </argument>
         </arguments>
@@ -51,12 +52,12 @@ _h = 12
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_text(100,100, (_w/100)*50)
+            <string>draw_text(200,100,self.percent)
 
 if self.percent == 0 {__w=0}
 else if self.percent == 100{__w=70}
-else{__w = 50}
-draw_rectangle_color(x,y,x+__w,y+_h,color,color,color,color,false);
+else{__w = _w/(100-self.percent)}
+draw_rectangle(x,y,x+__w,y+_h,false);
 </string>
           </argument>
         </arguments>

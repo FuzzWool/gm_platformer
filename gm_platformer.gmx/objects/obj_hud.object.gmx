@@ -37,7 +37,20 @@ _score_numbers = 0
 _animated_score = 0
 
 //ENEMY HP
-instance_create(233,2, obj_enemyhp_red)
+__enemyhp_bg = instance_create(233,2, obj_enemyhp)
+__enemyhp_bg.color = make_color_rgb(200,200,200);
+__enemyhp_bg.depth = -19
+//
+_animated_enemyhp = 100
+enemyhp_blue = instance_create(233,2,obj_enemyhp)
+enemyhp_blue.color = c_blue;
+enemyhp_blue.depth = -20
+enemyhp_blue.percent = 75
+
+enemyhp_red = instance_create(233,2, obj_enemyhp)
+enemyhp_red.color = c_red;
+enemyhp_red.depth = -21
+enemyhp_red.percent = 50
 </string>
           </argument>
         </arguments>
