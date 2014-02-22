@@ -47,7 +47,7 @@ slow_y = 0
 _facing_right = false
 
 //PAIN/ATTACK
-hp = 9999
+hp = 3
 old_hp = hp
 painbox = self
 attackbox = self

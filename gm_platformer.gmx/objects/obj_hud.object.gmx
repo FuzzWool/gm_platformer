@@ -37,8 +37,8 @@ _score_numbers = 0
 _animated_score = 0
 
 //ENEMY HP
-_enemyhp = 100
-_animated_enemyhp = 100
+_enemyhp = 0
+_animated_enemyhp = _enemyhp
 
 __enemyhp_bg = instance_create(233,2, obj_enemyhp)
 __enemyhp_bg.color = make_color_rgb(200,200,200);
@@ -47,12 +47,12 @@ __enemyhp_bg.depth = -19
 enemyhp_blue = instance_create(233,2,obj_enemyhp)
 enemyhp_blue.color = c_blue;
 enemyhp_blue.depth = -20
-enemyhp_blue.percent = 100
+enemyhp_blue.percent = _enemyhp
 
 enemyhp_red = instance_create(233,2, obj_enemyhp)
 enemyhp_red.color = c_red;
 enemyhp_red.depth = -21
-enemyhp_red.percent = 100
+enemyhp_red.percent = _enemyhp
 </string>
           </argument>
         </arguments>
@@ -166,10 +166,17 @@ if keyboard_check_released(ord('S'))
 {_enemyhp += 10}*/
 
 //track enemy hp (last hit)
-if track_player.last_hit.hp != 0
-{_enemyhp = floor(100/(track_player.last_hit.old_hp/track_player.last_hit.hp))}
-else
-{_enemyhp = 0}
+if instance_exists(track_player.last_hit)
+and track_player.last_hit != false
+{
+    if track_player.last_hit.old_hp &gt; 1
+    {
+        if track_player.last_hit.hp != 0
+        {_enemyhp = floor(100/(track_player.last_hit.old_hp/track_player.last_hit.hp))}
+        else
+        {_enemyhp = 0}
+    }
+}
 
 //animate
 //enemyhp_red, blue
@@ -211,8 +218,7 @@ _init = true
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_text(100,100,_enemyhp)
-draw_me()
+            <string>draw_me()
 </string>
           </argument>
         </arguments>

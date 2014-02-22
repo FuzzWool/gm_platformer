@@ -29,7 +29,7 @@
 
 //HUD
 score = 0
-last_hit = id
+last_hit = false
 _hud = instance_create(0,0,obj_hud)
 _hud.track_player = id
 
@@ -138,6 +138,7 @@ if swordbox != false
             if place_meeting(x,y,ins_Player.swordbox)
             {
                 pain=1
+                ins_Player.last_hit = id
                 //mmm, satisfying
                 /*__move = 4
                 if ins_Player._facing_right{ins_Player.move_x = -__move}
@@ -151,6 +152,7 @@ if swordbox != false
                 __y = __sword.y + (__sword.sprite_height/2)
                 __sfx = instance_create(__x,__y,obj_slash)
                 __sfx.depth = -9
+            
             }
         }
     }
@@ -164,6 +166,7 @@ with obj_group_enemy
         {
             pain=1
             hitby_wave = true
+            ins_Player.last_hit = id
         }
         else if not place_meeting(x,y,obj_wandererswave)
         {hitby_wave = false}
@@ -201,13 +204,7 @@ with obj_group_enemy
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if keyboard_check_pressed(ord('A'))
-{hp -= 1;}
-if keyboard_check_pressed(ord('S'))
-{hp = old_hp}
-
-
-//RESET
+            <string>//RESET
 if room_speed != 60{room_speed = 60;}
 
 //PHYSICS
