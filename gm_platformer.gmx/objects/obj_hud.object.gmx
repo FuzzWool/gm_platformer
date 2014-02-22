@@ -37,20 +37,22 @@ _score_numbers = 0
 _animated_score = 0
 
 //ENEMY HP
+_enemyhp = 100
+_animated_enemyhp = 100
+
 __enemyhp_bg = instance_create(233,2, obj_enemyhp)
 __enemyhp_bg.color = make_color_rgb(200,200,200);
 __enemyhp_bg.depth = -19
-//
-_animated_enemyhp = 100
+
 enemyhp_blue = instance_create(233,2,obj_enemyhp)
 enemyhp_blue.color = c_blue;
 enemyhp_blue.depth = -20
-enemyhp_blue.percent = 75
+enemyhp_blue.percent = 100
 
 enemyhp_red = instance_create(233,2, obj_enemyhp)
 enemyhp_red.color = c_red;
 enemyhp_red.depth = -21
-enemyhp_red.percent = 50
+enemyhp_red.percent = 100
 </string>
           </argument>
         </arguments>
@@ -157,6 +159,29 @@ while __i &gt; 0
 }
 
 
+//ENEMY HP
+if keyboard_check_released(ord('A'))
+{_enemyhp -= 10}
+if keyboard_check_released(ord('S'))
+{_enemyhp += 10}
+
+//animate
+//enemyhp_red, blue
+if _animated_enemyhp &lt; _enemyhp{_animated_enemyhp += 1}
+if _animated_enemyhp &gt; _enemyhp{_animated_enemyhp -= 1}
+enemyhp_blue.percent = _animated_enemyhp
+
+if _enemyhp &lt; enemyhp_red.percent
+{
+    enemyhp_red.percent = _enemyhp
+}
+if _enemyhp &gt; enemyhp_red.percent
+{
+    enemyhp_red.percent += 1
+}
+
+//
+
 _init = true
 </string>
           </argument>
@@ -180,7 +205,8 @@ _init = true
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_me()
+            <string>draw_text(100,100,_enemyhp)
+draw_me()
 </string>
           </argument>
         </arguments>
