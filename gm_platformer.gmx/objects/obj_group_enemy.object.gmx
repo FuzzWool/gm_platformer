@@ -32,6 +32,7 @@
 
 //damage/pain
 hp = 5
+old_hp = hp
 pain = 0
 damage = 1
 //

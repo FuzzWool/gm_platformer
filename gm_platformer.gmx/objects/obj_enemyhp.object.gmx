@@ -51,10 +51,12 @@ _h = 12
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if self.percent == 0 {__w=0}
-else if self.percent == 100{__w=70}
-else{__w = (_w/100)*percent}
-draw_rectangle_color(x,y,x+__w,y+_h,color,color,color,color,false);
+            <string>if self.percent != 0
+{
+    if self.percent == 100{__w=70}
+    else{__w = (_w/100)*percent}
+    draw_rectangle_color(x,y,x+__w,y+_h,color,color,color,color,false);
+}
 </string>
           </argument>
         </arguments>

@@ -160,15 +160,21 @@ while __i &gt; 0
 
 
 //ENEMY HP
-if keyboard_check_released(ord('A'))
+/*if keyboard_check_released(ord('A'))
 {_enemyhp -= 10}
 if keyboard_check_released(ord('S'))
-{_enemyhp += 10}
+{_enemyhp += 10}*/
+
+//track enemy hp (last hit)
+if track_player.last_hit.hp != 0
+{_enemyhp = floor(100/(track_player.last_hit.old_hp/track_player.last_hit.hp))}
+else
+{_enemyhp = 0}
 
 //animate
 //enemyhp_red, blue
-if _animated_enemyhp &lt; _enemyhp{_animated_enemyhp += 1}
-if _animated_enemyhp &gt; _enemyhp{_animated_enemyhp -= 1}
+if _animated_enemyhp &lt; _enemyhp{_animated_enemyhp += 2}
+if _animated_enemyhp &gt; _enemyhp{_animated_enemyhp -= 2}
 enemyhp_blue.percent = _animated_enemyhp
 
 if _enemyhp &lt; enemyhp_red.percent
@@ -177,7 +183,7 @@ if _enemyhp &lt; enemyhp_red.percent
 }
 if _enemyhp &gt; enemyhp_red.percent
 {
-    enemyhp_red.percent += 1
+    enemyhp_red.percent += 2
 }
 
 //

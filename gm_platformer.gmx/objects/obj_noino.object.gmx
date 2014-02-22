@@ -39,6 +39,7 @@ slow_y = 0
 
 //hp
 hp = 1
+old_hp = hp
 
 //PAIN/ATTACK
 painbox = sprite_index

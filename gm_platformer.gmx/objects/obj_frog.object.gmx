@@ -34,6 +34,7 @@ image_speed = 0.2;
 
 //attack/pain
 hp = 8
+old_hp = hp
 painbox = sprite_index
 attackbox = sprite_index
 

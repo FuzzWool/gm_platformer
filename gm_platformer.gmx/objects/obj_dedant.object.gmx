@@ -48,6 +48,7 @@ _facing_right = false
 
 //PAIN/ATTACK
 hp = 9999
+old_hp = hp
 painbox = self
 attackbox = self
 
