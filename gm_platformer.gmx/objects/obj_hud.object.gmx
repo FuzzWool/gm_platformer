@@ -34,6 +34,7 @@ _animated_hp = 0
 
 //SCORE
 _score_numbers = 0
+_animated_score = 0
 </string>
           </argument>
         </arguments>
@@ -116,7 +117,12 @@ if _init == false
 }
 
 //LOOP
-__score = string(score)
+
+//animated score
+if _animated_score &lt; score{_animated_score += 10}
+if _animated_score &gt; score{_animated_score -= 10}
+__score = string(_animated_score)
+//
 while string_length(__score) &lt; 8{__score = "0"+__score;}
 __numbered = false
 __i = 8
