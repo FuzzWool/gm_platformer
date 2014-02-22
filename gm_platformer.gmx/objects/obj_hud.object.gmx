@@ -3,7 +3,7 @@
   <spriteName>spr_hud</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-20</depth>
+  <depth>-22</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -35,6 +35,9 @@ _animated_hp = 0
 //SCORE
 _score_numbers = 0
 _animated_score = 0
+
+//ENEMY HP
+instance_create(233,2, obj_enemyhp_red)
 </string>
           </argument>
         </arguments>
@@ -142,6 +145,29 @@ while __i &gt; 0
 
 
 _init = true
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_me()
 </string>
           </argument>
         </arguments>

@@ -98,6 +98,7 @@
         <object>objects\obj_hud</object>
         <object>objects\obj_hp</object>
         <object>objects\obj_score</object>
+        <object>objects\obj_enemyhp_red</object>
       </objects>
     </objects>
     <objects name="Enemies">

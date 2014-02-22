@@ -399,11 +399,7 @@ _was_in_pain = _in_pain
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-//score
-draw_text(100,100, score)
-
-//direction, origin
+            <string>//direction, origin
 if _facing_right == true {_flip = 1}
 if _facing_right == false {_flip = -1}
 _x = x+1; _y = y
