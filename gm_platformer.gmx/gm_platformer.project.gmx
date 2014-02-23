@@ -78,6 +78,9 @@
       <sprite>sprites\spr_hp</sprite>
       <sprite>sprites\spr_score</sprite>
     </sprites>
+    <sprites name="Items">
+      <sprite>sprites\spr_orb</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -121,6 +124,9 @@
     </objects>
     <objects name="SFX">
       <object>objects\obj_slash</object>
+    </objects>
+    <objects name="Items">
+      <object>objects\obj_orb</object>
     </objects>
   </objects>
   <rooms name="rooms">
