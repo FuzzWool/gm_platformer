@@ -28,14 +28,17 @@
             <string>_collision = true
 
 //The amount "batched on" to a proportional movement.
+move = true
 move_x = 0
 move_y = 0
 
 //The absolute limits of a movement. May never exceed.
+cap = true
 cap_x = 2.5
 cap_y = 7.5
 
 //The amount the move values go towards 'normalizing' each loop.
+slow = true
 slow_x = 0.25
 slow_y = 0
 </string>
@@ -63,22 +66,31 @@ slow_y = 0
             <string>//APPLY PHYSICS
 
 //Cap movement.
-if move_x &gt;= +cap_x {move_x = +cap_x}
-if move_x &lt;= -cap_x {move_x = -cap_x}
-if move_y &gt;= +cap_y {move_y = +cap_y}
-if move_y &lt;= -cap_y {move_y = -cap_y}
+if cap
+{
+    if move_x &gt;= +cap_x {move_x = +cap_x}
+    if move_x &lt;= -cap_x {move_x = -cap_x}
+    if move_y &gt;= +cap_y {move_y = +cap_y}
+    if move_y &lt;= -cap_y {move_y = -cap_y}
+}
 
 //Move, check all nearby collisions.
-if move_x &gt; 0 {move_push(+1,0,+round(move_x))}
-if move_x &lt; 0 {move_push(-1,0,-round(move_x))}
-if move_y &gt; 0 {move_push(0,+1,+round(move_y))}
-if move_y &lt; 0 {move_push(0,-1,-round(move_y))}
+if move
+{
+    if move_x &gt; 0 {move_push(+1,0,+round(move_x))}
+    if move_x &lt; 0 {move_push(-1,0,-round(move_x))}
+    if move_y &gt; 0 {move_push(0,+1,+round(move_y))}
+    if move_y &lt; 0 {move_push(0,-1,-round(move_y))}
+}
 
 //Slow down movement.
-if move_x &gt; 0 {move_x -= slow_x}
-if move_x &lt; 0 {move_x += slow_x}
-if move_y &gt; 0 {move_y -= slow_y}
-if move_y &lt; 0 {move_y += slow_y}
+if slow
+{
+    if move_x &gt; 0 {move_x -= slow_x}
+    if move_x &lt; 0 {move_x += slow_x}
+    if move_y &gt; 0 {move_y -= slow_y}
+    if move_y &lt; 0 {move_y += slow_y}
+}
 </string>
           </argument>
         </arguments>
