@@ -29,6 +29,9 @@
 slow = false
 image_speed = 0.3
 
+//FALLING (Step, Collision)
+_active = false
+
 //BOPPING (Step)
 _original_y = y
 _init = false
@@ -54,12 +57,64 @@ _init = false
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//BOPPING (uses it's own slow)
-if (y+move_y &gt;= _original_y)
-{move_y -= 1; slow_y = +0.1}
+            <string>//STATES
+//idle
+if not _active
+{
+    //BOPPING (uses it's own slow)
+    if (y+move_y &gt;= _original_y)
+    {move_y -= 1; slow_y = +0.1}
+    
+    move_y += slow_y
+}
+//falling
+else
+{
+    move_y += 0.5
+    //collision
+    if place_meeting(x,y+1,obj_solid)
+    {instance_destroy()}
+}
 
-move_y += slow_y
 event_inherited()
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_wandererswave">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>_active = true
+sprite_index = spr_orb_active
+
+//particles
+__i = 0
+while __i &lt; 6
+{
+    __x = x+choose(8,6,4,2)
+    __y = y+choose(8,6,4,2)
+    __o = choose(obj_sparkle1, obj_sparkle2)
+    __sparkle = instance_create(__x,__y,__o)
+    __i++;
+}
+
+//fall
+move_y = 0
 </string>
           </argument>
         </arguments>
@@ -82,23 +137,28 @@ event_inherited()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//particles
-__i = 0
-while __i &lt; 6
+            <string>if not _active
 {
-    __x = x+choose(8,6,4,2)
-    __y = y+choose(8,6,4,2)
-    __o = choose(obj_sparkle1, obj_sparkle2)
-    instance_create(__x,__y,__o)
-    __i++;
+    __hp_increase = (2/11)
+    
+    //particles
+    __i = 0
+    while __i &lt; 6
+    {
+        __x = x+choose(8,6,4,2)
+        __y = y+choose(8,6,4,2)
+        __o = choose(obj_sparkle1, obj_sparkle2)
+        __sparkle = instance_create(__x,__y,__o)
+        __i++;
+    }
+    //sound
+    sound_abs(snd_orb)
+    //hp/score increase
+    ins_Player.hp += __hp_increase
+    ins_Player.score += 150
+    //destroy
+    instance_destroy()
 }
-//sound
-sound_abs(snd_orb)
-//hp/score increase
-ins_Player.hp += (2/11)
-ins_Player.score += 150
-//destroy
-instance_destroy()
 </string>
           </argument>
         </arguments>

@@ -85,6 +85,7 @@
     </sprites>
     <sprites name="Items">
       <sprite>sprites\spr_orb</sprite>
+      <sprite>sprites\spr_orb_active</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background"/>

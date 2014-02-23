@@ -204,14 +204,7 @@ with obj_group_enemy
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//jump height
-if keyboard_check_released(ord('A')) and not _hovering
-{
-    hp = 1;
-}
-
-
-//RESET
+            <string>//RESET
 if room_speed != 60{room_speed = 60;}
 if hp &gt;= old_hp{hp = old_hp}
 
@@ -283,8 +276,20 @@ if not _in_pain
     //finish
     if _charging == 45
     {
-        _charged = true;
+        //effects
+        //particles
+        __i = 0
+        while __i &lt; 1
+        {
+            __x = x+choose(8,6,4,2)
+            __y = y+choose(8,6,4,2)
+            __o = choose(obj_sparkle1, obj_sparkle2)
+            instance_create(__x-8,__y-16,__o)
+            __i++;
+        }
         sound_abs(snd_player_charged); audio_stop_sound(snd_player_charge)
+        //
+        _charged = true;
     }
     //stop
     if not keyboard_check(ord('X'))
