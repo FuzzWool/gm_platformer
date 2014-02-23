@@ -152,7 +152,7 @@ move_y = 0
         __i++;
     }
     //sound
-    sound_abs(snd_orb)
+    pitch_sound_abs(snd_orb)
     //hp/score increase
     ins_Player.hp += __hp_increase
     ins_Player.score += 150

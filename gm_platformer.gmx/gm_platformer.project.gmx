@@ -94,6 +94,7 @@
     <script>scripts\draw_me.gml</script>
     <script>scripts\move_push.gml</script>
     <script>scripts\sound_abs.gml</script>
+    <script>scripts\pitch_sound_abs.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_tile</object>

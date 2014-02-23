@@ -9,6 +9,6 @@ if global.soundoff=0
     {
        audio_stop_sound(argument0)
        __snd = audio_play_sound(argument0,5,0)
-       audio_sound_pitch(__snd, choose(0.9,1,1.1));
+       audio_sound_pitch(__snd, choose(0.8,0.9,1,1.1,1.2));
     }
 }
