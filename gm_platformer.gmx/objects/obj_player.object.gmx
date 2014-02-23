@@ -204,8 +204,16 @@ with obj_group_enemy
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//RESET
+            <string>//jump height
+if keyboard_check_released(ord('A')) and not _hovering
+{
+    hp = 1;
+}
+
+
+//RESET
 if room_speed != 60{room_speed = 60;}
+if hp &gt;= old_hp{hp = old_hp}
 
 //PHYSICS
 slow_x = 0.25

@@ -15,6 +15,9 @@
       <sound>sound\snd_player_shoot</sound>
       <sound>sound\snd_player_hurt</sound>
     </sounds>
+    <sounds name="Items">
+      <sound>sound\snd_orb</sound>
+    </sounds>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\black_box</sprite>
@@ -72,6 +75,8 @@
     </sprites>
     <sprites name="SFX">
       <sprite>sprites\spr_slash</sprite>
+      <sprite>sprites\spr_sparkle1</sprite>
+      <sprite>sprites\spr_sparkle2</sprite>
     </sprites>
     <sprites name="HUD">
       <sprite>sprites\spr_hud</sprite>
@@ -124,6 +129,8 @@
     </objects>
     <objects name="SFX">
       <object>objects\obj_slash</object>
+      <object>objects\obj_sparkle1</object>
+      <object>objects\obj_sparkle2</object>
     </objects>
     <objects name="Items">
       <object>objects\obj_orb</object>
