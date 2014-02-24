@@ -48,7 +48,20 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if image_index &gt;= 11{instance_destroy()}
+            <string>//DESTROY
+if image_index &gt;= 11{instance_destroy()}
+
+//PAIN
+with obj_group_enemy
+{
+    if painbox != false
+    {
+        if place_meeting(x,y,obj_orb_explosion)
+        {
+            pain=999
+        }
+    }
+}
 </string>
           </argument>
         </arguments>
