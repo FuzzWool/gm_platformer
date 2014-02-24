@@ -73,7 +73,10 @@ else
     move_y += 0.5
     //collision
     if place_meeting(x,y+1,obj_solid)
-    {instance_destroy()}
+    {
+        instance_create(x,y,obj_orb_explosion)
+        instance_destroy()
+    }
 }
 
 event_inherited()
@@ -99,22 +102,28 @@ event_inherited()
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>_active = true
-sprite_index = spr_orb_active
-
-//particles
-__i = 0
-while __i &lt; 6
+            <string>if not _active
 {
-    __x = x+choose(8,6,4,2)
-    __y = y+choose(8,6,4,2)
-    __o = choose(obj_sparkle1, obj_sparkle2)
-    __sparkle = instance_create(__x,__y,__o)
-    __i++;
+    _active = true
+    sprite_index = spr_orb_active
+    
+    //particles
+    __i = 0
+    while __i &lt; 6
+    {
+        __x = x+choose(8,6,4,2)
+        __y = y+choose(8,6,4,2)
+        __o = choose(obj_sparkle1, obj_sparkle2)
+        __sparkle = instance_create(__x,__y,__o)
+        __i++;
+    }
+    //sound
+    pitch_sound_abs(snd_orb_bounce)
+    //fall
+    move_y = 0
+    //score
+    ins_Player.score += 150
 }
-
-//fall
-move_y = 0
 </string>
           </argument>
         </arguments>

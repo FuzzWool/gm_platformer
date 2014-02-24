@@ -17,6 +17,8 @@
     </sounds>
     <sounds name="Items">
       <sound>sound\snd_orb</sound>
+      <sound>sound\snd_orb_bounce</sound>
+      <sound>sound\snd_orb_explode</sound>
     </sounds>
   </sounds>
   <sprites name="sprites">
@@ -86,6 +88,7 @@
     <sprites name="Items">
       <sprite>sprites\spr_orb</sprite>
       <sprite>sprites\spr_orb_active</sprite>
+      <sprite>sprites\spr_orb_explosion</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background"/>
@@ -136,6 +139,7 @@
     </objects>
     <objects name="Items">
       <object>objects\obj_orb</object>
+      <object>objects\obj_orb_explosion</object>
     </objects>
   </objects>
   <rooms name="rooms">
