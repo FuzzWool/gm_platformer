@@ -79,6 +79,7 @@
       <sprite>sprites\spr_slash</sprite>
       <sprite>sprites\spr_sparkle1</sprite>
       <sprite>sprites\spr_sparkle2</sprite>
+      <sprite>sprites\spr_attack_overlay</sprite>
     </sprites>
     <sprites name="HUD">
       <sprite>sprites\spr_hud</sprite>
@@ -136,6 +137,7 @@
       <object>objects\obj_slash</object>
       <object>objects\obj_sparkle1</object>
       <object>objects\obj_sparkle2</object>
+      <object>objects\obj_attack_overlay</object>
     </objects>
     <objects name="Items">
       <object>objects\obj_orb</object>
